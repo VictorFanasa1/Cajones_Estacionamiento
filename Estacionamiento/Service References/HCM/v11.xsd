@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://servicios.grupofarmacos.com/FAR/Schema/FARDatosEmpleado" xmlns:emp="http://servicios.grupofarmacos.com/FAR/Schema/FAREmpleados" elementFormDefault="qualified" targetNamespace="http://servicios.grupofarmacos.com/FAR/Schema/FARDatosEmpleado" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFAREmpleadosXSD" namespace="http://servicios.grupofarmacos.com/FAR/Schema/FAREmpleados" />
+  <xsd:element name="idHCM" type="xsd:integer" />
+  <xsd:element name="tipoMovimiento" type="xsd:string" />
+  <xsd:element name="idMovimiento" type="xsd:string" />
+  <xsd:element name="movimiento" type="xsd:string" />
+  <xsd:element name="idEmpJefe" type="xsd:string" />
+  <xsd:element name="nombreJefe" type="xsd:string" />
+  <xsd:element name="emailJefe" type="xsd:string" />
+  <xsd:element name="tipoPeriodo" type="xsd:string" />
+  <xsd:element name="idDepartamento" type="xsd:string" />
+  <xsd:element name="descripcionDepartamento" type="xsd:string" />
+  <xsd:element name="turnoNocturno" type="xsd:string" />
+  <xsd:element name="porcentajeTurnoNocturno" type="xsd:string" />
+  <xsd:element name="idPresupuesto" type="xsd:integer" />
+  <xsd:element name="idUbicacion" type="xsd:string" />
+  <xsd:element name="descripcionUbicacion" type="xsd:string" />
+  <xsd:element name="cuentaBancaria" type="xsd:integer" />
+  <xsd:element name="cuentaBancariaAnt" type="xsd:integer" />
+  <xsd:element name="cuentaInterbancaria" type="xsd:integer" />
+  <xsd:element name="idPuesto" type="xsd:string" />
+  <xsd:element name="descripcionPuesto" type="xsd:string" />
+  <xsd:element name="idUnidadNegocio" type="xsd:string" />
+  <xsd:element name="descripcionUnidadNegocio" type="xsd:string" />
+  <xsd:element name="grupoPago" type="xsd:string" />
+  <xsd:element name="descripcionGrupoPago" type="xsd:string" />
+  <xsd:element name="tipoContrato" type="xsd:string" />
+  <xsd:element name="tipoContratoAnt" type="xsd:string" />
+  <xsd:element name="idTransaccion" type="xsd:integer" />
+  <xsd:element name="flag" type="xsd:string" />
+  <xsd:element name="key" type="xsd:string" />
+  <xsd:element name="accion" type="xsd:string" />
+  <xsd:element name="salarioMensual" type="xsd:decimal" />
+  <xsd:element name="salarioDiario" type="xsd:decimal" />
+  <xsd:element name="salarioBase" type="xsd:decimal" />
+  <xsd:element name="centroCosto" type="xsd:string" />
+  <xsd:element name="centroCostoAnt" type="xsd:string" />
+  <xsd:element name="registroPatronal" type="xsd:string" />
+  <xsd:element name="idCompania" type="xsd:string" />
+  <xsd:element name="descripcionCompania" type="xsd:string" />
+  <xsd:element name="idOrganizacion" type="xsd:int" />
+  <xsd:element name="nombreOrganizacion" type="xsd:string" />
+  <xsd:element name="descripcionOrganizacion" type="xsd:string" />
+  <xsd:element name="entidadPago" type="xsd:string" />
+  <xsd:element name="entidadPagoAnt" type="xsd:string" />
+  <xsd:element name="empConfianza" type="xsd:string" />
+  <xsd:element name="codAccion" type="xsd:string" />
+  <xsd:element name="accNombre" type="xsd:string" />
+  <xsd:element name="codRazon" type="xsd:string" />
+  <xsd:element name="banco" type="xsd:string" />
+  <xsd:element name="bancoAnt" type="xsd:string" />
+  <xsd:element name="CLABE" type="xsd:string" />
+  <xsd:element name="CLABEAnt" type="xsd:string" />
+  <xsd:element name="fechaCambio" type="xsd:string" />
+  <xsd:element name="idProceso" type="xsd:string" />
+  <xsd:element name="estatus" type="xsd:string" />
+  <xsd:element name="observaciones" type="xsd:string" />
+  <xsd:element name="primerNombreFiscal" type="xsd:string" />
+  <xsd:element name="segundoNombreFiscal" type="xsd:string" />
+  <xsd:element name="apellidoPaternoFiscal" type="xsd:string" />
+  <xsd:element name="apellidoMaternoFiscal" type="xsd:string" />
+  <xsd:element name="calleFiscal" type="xsd:string" />
+  <xsd:element name="coloniaFiscal" type="xsd:string" />
+  <xsd:element name="municipioFiscal" type="xsd:string" />
+  <xsd:element name="ciudadFiscal" type="xsd:string" />
+  <xsd:element name="cpFiscal" type="xsd:string" />
+  <xsd:element name="estadoFiscal" type="xsd:string" />
+  <xsd:element name="primerNombreFiscalAnterior" type="xsd:string" />
+  <xsd:element name="segundoNombreFiscalAnterior" type="xsd:string" />
+  <xsd:element name="apellidoPaternoFiscalAnterior" type="xsd:string" />
+  <xsd:element name="apellidoMaternoFiscalAnterior" type="xsd:string" />
+  <xsd:element name="calleFiscalAnterior" type="xsd:string" />
+  <xsd:element name="coloniaFiscalAnterior" type="xsd:string" />
+  <xsd:element name="municipioFiscalAnterior" type="xsd:string" />
+  <xsd:element name="ciudadFiscalAnterior" type="xsd:string" />
+  <xsd:element name="cpFiscalAnterior" type="xsd:string" />
+  <xsd:element name="estadoFiscalAnterior" type="xsd:string" />
+  <xsd:complexType name="HcmMinType">
+    <xsd:sequence>
+      <xsd:element ref="tipoMovimiento" />
+      <xsd:element ref="movimiento" />
+      <xsd:element ref="idMovimiento" />
+      <xsd:element ref="emp:fechaActualizacion" />
+      <xsd:element ref="emp:personId" />
+      <xsd:element ref="emp:personName" />
+      <xsd:element ref="emp:fechaInicioEfectiva" />
+      <xsd:element ref="emp:fechaEfectiva" />
+      <xsd:element ref="emp:tipoEmpleado" />
+      <xsd:element ref="tipoPeriodo" />
+      <xsd:element ref="emp:personNumber" />
+      <xsd:element ref="emp:email" />
+      <xsd:element ref="emp:status" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProveedorType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="movimiento" />
+      <xsd:element ref="emp:personId" />
+      <xsd:element minOccurs="0" ref="idEmpJefe" />
+      <xsd:element minOccurs="0" ref="emp:empresa" />
+      <xsd:element minOccurs="0" ref="emp:nombreEmpresa" />
+      <xsd:element minOccurs="0" ref="nombreJefe" />
+      <xsd:element minOccurs="0" ref="emailJefe" />
+      <xsd:element minOccurs="0" ref="emp:setId" />
+      <xsd:element minOccurs="0" ref="empConfianza" />
+      <xsd:element minOccurs="0" ref="emp:nivel" />
+      <xsd:element minOccurs="0" ref="tipoContrato" />
+      <xsd:element minOccurs="0" ref="emp:nombre" />
+      <xsd:element minOccurs="0" ref="emp:apellidoPaterno" />
+      <xsd:element minOccurs="0" ref="emp:apellidoMaterno" />
+      <xsd:element minOccurs="0" ref="emp:genero" />
+      <xsd:element minOccurs="0" ref="emp:generoAnt" />
+      <xsd:element minOccurs="0" ref="emp:estadoCivil" />
+      <xsd:element minOccurs="0" ref="emp:fechaNacimiento" />
+      <xsd:element minOccurs="0" ref="emp:nss" />
+      <xsd:element minOccurs="0" ref="emp:rfc" />
+      <xsd:element minOccurs="0" ref="emp:curp" />
+      <xsd:element minOccurs="0" ref="registroPatronal" />
+      <xsd:element minOccurs="0" ref="emp:fechaAntiguedad" />
+      <xsd:element minOccurs="0" ref="emp:fechaIngreso" />
+      <xsd:element minOccurs="0" ref="emp:fechaAltaNSS" />
+      <xsd:element minOccurs="0" ref="salarioDiario" />
+      <xsd:element minOccurs="0" ref="idUnidadNegocio" />
+      <xsd:element minOccurs="0" ref="idPuesto" />
+      <xsd:element minOccurs="0" ref="descripcionPuesto" />
+      <xsd:element minOccurs="0" ref="idDepartamento" />
+      <xsd:element minOccurs="0" ref="descripcionDepartamento" />
+      <xsd:element minOccurs="0" ref="turnoNocturno" />
+      <xsd:element minOccurs="0" ref="porcentajeTurnoNocturno" />
+      <xsd:element minOccurs="0" ref="idPresupuesto" />
+      <xsd:element minOccurs="0" ref="idUbicacion" />
+      <xsd:element minOccurs="0" ref="descripcionUbicacion" />
+      <xsd:element minOccurs="0" ref="entidadPago" />
+      <xsd:element minOccurs="0" ref="centroCosto" />
+      <xsd:element minOccurs="0" ref="grupoPago" />
+      <xsd:element minOccurs="0" ref="emp:fechaBaja" />
+      <xsd:element minOccurs="0" ref="emp:motivoBaja" />
+      <xsd:element minOccurs="0" ref="emp:direccion" />
+      <xsd:element minOccurs="0" ref="emp:claveAcceso" />
+      <xsd:element minOccurs="0" ref="emp:salarioMensual" />
+      <xsd:element minOccurs="0" ref="emp:rfcSubContratacion" />
+      <xsd:element minOccurs="0" ref="codAccion" />
+      <xsd:element minOccurs="0" ref="accNombre" />
+      <xsd:element minOccurs="0" ref="codRazon" />
+      <xsd:element minOccurs="0" ref="banco" />
+      <xsd:element minOccurs="0" ref="bancoAnt" />
+      <xsd:element minOccurs="0" ref="CLABE" />
+      <xsd:element minOccurs="0" ref="CLABEAnt" />
+      <xsd:element minOccurs="0" ref="cuentaBancaria" />
+      <xsd:element minOccurs="0" ref="fechaCambio" />
+      <xsd:element minOccurs="0" name="datosFiscales" type="TimbradoType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TimbradoType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="primerNombreFiscal" />
+      <xsd:element minOccurs="0" ref="segundoNombreFiscal" />
+      <xsd:element minOccurs="0" ref="apellidoPaternoFiscal" />
+      <xsd:element minOccurs="0" ref="apellidoMaternoFiscal" />
+      <xsd:element minOccurs="0" ref="calleFiscal" />
+      <xsd:element minOccurs="0" ref="coloniaFiscal" />
+      <xsd:element minOccurs="0" ref="municipioFiscal" />
+      <xsd:element minOccurs="0" ref="ciudadFiscal" />
+      <xsd:element minOccurs="0" ref="cpFiscal" />
+      <xsd:element minOccurs="0" ref="estadoFiscal" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArchivoType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="idProceso" />
+      <xsd:element minOccurs="0" ref="estatus" />
+      <xsd:element minOccurs="0" ref="observaciones" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

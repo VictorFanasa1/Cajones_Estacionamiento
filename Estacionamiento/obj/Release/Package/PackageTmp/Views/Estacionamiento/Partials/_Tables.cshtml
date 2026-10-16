@@ -1,0 +1,95 @@
+@* Tablas de Usuarios y Visitantes *@
+<div class="collapse" id="filtrosUsuarios" style="margin-bottom:8px;">
+  <div class="row">
+    <div class="col-sm-4">
+      <input type="text" id="filtroTextoUsuarios" class="form-control"
+        placeholder="Buscar por usuario, correo, lugar, dirección o notas" />
+    </div>
+    <div class="col-sm-3">
+      <div style="display:flex; align-items:center;">
+        <label for="filtroDesdeUsuarios" style="font-weight:normal; margin-bottom:0; margin-right:8px;">Fecha Asignación
+          desde</label>
+        <input type="date" id="filtroDesdeUsuarios" class="form-control" style="width:70%;" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div style="display:flex; align-items:center;">
+        <label for="filtroHastaUsuarios" style="font-weight:normal; margin-bottom:0; margin-right:8px;">Fecha Asignación
+          hasta</label>
+        <input type="date" id="filtroHastaUsuarios" class="form-control" style="width:70%;" />
+      </div>
+    </div>
+    <div class="col-sm-2 text-right">
+      <button type="button" id="btnLimpiarUsuarios" class="btn btn-default">Limpiar</button>
+    </div>
+  </div>
+  <hr style="margin:8px 0;" />
+</div>
+
+<div class="collapse divScroll" id="divTabla">
+  <table class="table" style="border: 2px solid #34495E; text-align:center;" id="tableUsuariosEstacionamiento">
+    <thead>
+      <tr>
+        <th><b>Dirección</b></th>
+        <th><b>Lugar</b></th>
+        <th><b>Usuario</b></th>
+        <th><b>Correo</b></th>
+        <th><b>Fecha Asignación</b></th>
+        <th><b>Observaciones</b></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="tbodyUsuariosEstacionamiento"></tbody>
+  </table>
+</div>
+
+<div class="collapse" id="filtrosVisitantes" style="margin-bottom:8px;">
+  <div class="row">
+    <div class="col-sm-4">
+      <input type="text" id="filtroTextoVisitantes" class="form-control"
+        placeholder="Buscar por visitante, responsable, placas, modelo, color o notas" />
+    </div>
+    <div class="col-sm-3">
+      <div style="display:flex; align-items:center;">
+        <label for="filtroDesdeVisitantes" style="font-weight:normal; margin-bottom:0; margin-right:8px;">Fecha Visita
+          desde</label>
+        <input type="date" id="filtroDesdeVisitantes" class="form-control" style="width:70%;" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div style="display:flex; align-items:center;">
+        <label for="filtroHastaVisitantes" style="font-weight:normal; margin-bottom:0; margin-right:8px;">Fecha Visita
+          hasta</label>
+        <input type="date" id="filtroHastaVisitantes" class="form-control" style="width:70%;" />
+      </div>
+    </div>
+    <div class="col-sm-2 text-right">
+      <button type="button" id="btnLimpiarVisitantes" class="btn btn-default">Limpiar</button>
+    </div>
+  </div>
+  <hr style="margin:8px 0;" />
+</div>
+
+<div class="collapse divScroll" id="divTablaVisitantes">
+  <table class="table" style="border: 2px solid #34495E; text-align:center" id="tableVisitantesEstacionamiento">
+    <thead>
+      <tr>
+        <th><b>Dirección</b></th>
+        <th><b>Lugar</b></th>
+        <th></th>
+        <th><b>Usuario</b></th>
+        <th><b>Usuario Responsable</b></th>
+        <th><b>Hora Entrada</b></th>
+        <th><b>Hora Salida</b></th>
+        <th><b>Editar Hora Salida</b></th>
+        <th><b>Placas</b></th>
+        <th><b>Modelo</b></th>
+        <th><b>Color</b></th>
+        <th><b>Fecha Visita</b></th>
+        <th><b>Observaciones</b></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="tbodyVisitantesEstacionamiento"></tbody>
+  </table>
+</div>

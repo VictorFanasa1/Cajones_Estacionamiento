@@ -1,0 +1,759 @@
+﻿@{
+    ViewBag.Title = "AsignacionLugares";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="color:#283747; text-align:center; font-weight:bold">ASIGNACIÓN DE LUGARES </h3><br /><br />
+
+<style>
+    th,
+    td {
+        vertical-align: text-top;
+        text-align: center;
+    }
+
+    th {
+        vertical-align: bottom;
+        color: white;
+    }
+
+
+    /* Fixed Headers */
+
+    th {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background-color: #1A5276;
+    }
+
+    th[scope=row] {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 1;
+    }
+
+    th[scope=row] {
+        vertical-align: top;
+    }
+
+    table:nth-of-type(2) th:not([scope=row]):first-child {
+        left: 0;
+        z-index: 3;
+    }
+
+    /* Strictly for making the scrolling happen. */
+
+    th[scope=row]+td {
+        min-width: 24em;
+    }
+
+    th[scope=row] {
+        min-width: 20em;
+    }
+
+    .divScroll {
+        /* definir una altura pequeña para forzar el scroll */
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    .divScrollOne {
+        overflow-x: scroll;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #1A5276;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        /*background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent)*/
+        /*background-image: -webkit-linear-gradient(90deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent)*/
+    }
+
+    /*Desactivar las flechas en campo tipo number*/
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+@*<div style="text-align:center" id="tiposUser">
+    <div class="row">
+        <div class="col-md-6 col-xs-12">*@
+@*<button class="btn btn-success" style="border: 3px solid orange; background-color:white" id="btnEmpleados"><b style="font-size:20px; color:black">Empleados <span class="fas fa-users"></span></b></button>*@
+@*</div>
+        <div class="col-md-6 col-xs-12">
+            <button class="btn btn-success" style="border: 3px solid orange; background-color:white" id="btnVisitantes"><b style="font-size:20px; color:black">Visitantes <span class="fas fa-user-tie"></span></b></button>
+        </div>
+    </div>
+    <br /><br />
+</div>*@
+
+<div class="page-toolbar">
+    <div class="left">
+        <a href="@Url.Action("AdmEstacionamientos", "Estacionamiento")" class="back-link" title="Regresar">
+            <i class="fa fa-arrow-left fa-lg"></i>
+        </a>
+        <h1 class="toolbar-title">Lugares de Estacionamiento</h1>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="collapse" id="gifCargando2" style="text-align:center">
+    <img src="~/Gif/MiniGif.gif" style="width:200px; height:200px" />
+</div>
+
+<div class="container collapse" id="divMensajeExito" style="text-align:center; width:50%">
+    <br />
+    <div class="alert alert-success" style="text-align:center">
+        <span id="spanMensajeExito" style="font-weight:bold"></span>
+    </div>
+</div>
+
+<div class="collapse divScroll" id="divTablaVisitantesAsigna">
+    <!-- Filtros avanzados Solicitudes Visitantes (sin lugar) -->
+    <div class="panel panel-default" id="filtrosSolicitudesVisitantes" style="margin-bottom:10px;">
+        <div class="panel-heading" style="cursor:pointer"
+            onclick="$('#contenedorFiltrosSolicitudes').collapse('toggle');">
+            <b>Filtros Solicitudes Visitantes</b> <span class="glyphicon glyphicon-filter"></span>
+        </div>
+        <div id="contenedorFiltrosSolicitudes" class="panel-collapse collapse" style="padding:10px;">
+            <div class="row" style="margin-bottom:6px;">
+                <div class="col-sm-3">
+                    <label style="font-weight:normal;">Usuario Responsable</label>
+                    <input type="text" class="form-control" id="solRespFiltro" placeholder="Responsable" />
+                </div>
+                <div class="col-sm-3">
+                    <label style="font-weight:normal;">Nombre Visitante</label>
+                    <input type="text" class="form-control" id="solVisFiltro" placeholder="Visitante" />
+                </div>
+                <div class="col-sm-3">
+                    <label style="font-weight:normal;">Hora Entrada Desde</label>
+                    <input type="time" class="form-control" id="solHoraVisDesde" />
+                </div>
+                <div class="col-sm-3">
+                    <label style="font-weight:normal;">Hora Entrada hasta</label>
+                    <input type="time" class="form-control" id="solHoraVisHasta" />
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:6px;">
+                <div class="col-sm-3">
+                    <label style="font-weight:normal;">Hora Salida Desde</label>
+                    <input type="time" class="form-control" id="solHoraSalDesde" />
+                </div>
+                <div class="col-sm-3">
+                    <label style="font-weight:normal;">Hora Salida Hasta</label>
+                    <input type="time" class="form-control" id="solHoraSalHasta" />
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:6px;">
+                <div class="col-sm-2">
+                    <label style="font-weight:normal;">Placa</label>
+                    <input type="text" class="form-control" id="solPlacaFiltro" placeholder="ABC123" />
+                </div>
+                <div class="col-sm-2">
+                    <label style="font-weight:normal;">Fecha Visita Desde</label>
+                    <input type="date" class="form-control" id="solFechaVisDesde" />
+                </div>
+                <div class="col-sm-2">
+                    <label style="font-weight:normal;">Fecha Visita Hasta</label>
+                    <input type="date" class="form-control" id="solFechaVisHasta" />
+                </div>
+                <div class="col-sm-6" style="display:flex; align-items:flex-end; gap:6px;">
+                    <button type="button" class="btn btn-primary" style="background-color:#1A5276;border-color:#1A5276"
+                        onclick="FiltrarSolicitudesVisitantes();"><b>Aplicar</b></button>
+                    <button type="button" class="btn btn-default"
+                        onclick="LimpiarFiltrosSolicitudesVisitantes();"><b>Limpiar</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divScroll">
+        <table class="table" style="border: 2px solid #34495E; text-align:center;"
+               id="tableVisitantesEstacionamientoAsigna">
+            <thead>
+                <tr>
+                    <th><b>Dirección</b></th>
+                    <th><b>Lugar</b></th>
+                    <th><b>Usuario</b></th>
+                    <th><b>Usuario Responsable</b></th>
+                    <th><b>Hora Entrada</b></th>
+                    <th><b>Hora Salida</b></th>
+                    <th><b>Placas</b></th>
+                    <th><b>Modelo</b></th>
+                    <th><b>Color</b></th>
+                    <th><b>Fecha Visita</b></th>
+                    <th><b>Observaciones</b></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tbodyVisitantesEstacionamientoAsigna">
+                @*<tr>
+                    <td>Dirección/td>
+                    <td>Lugar</td>
+                    <td>Rol</td>
+                    <td>Fecha Asignación</td>
+                    <td>Observaciones</td>
+                </tr>*@
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+<div class="modal fade" id="modalCajones" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="justify-content:center">
+        <div class="modal-content" style="border:#1A5276 2px solid; align-items:center;">
+            <div class="modal-body">
+                <div style="text-align:center">
+                    <div class="row">
+                        <input hidden="hidden" id="txtRegistroCajonNuevo" />
+                        <div class="col-md-6">
+                            <h4 style="font-size:20px; font-weight:bold; color:gray">Seleccione Dirección de
+                                Estacionamiento:</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="listCatalogoSeleccionModal" name="ListaDeCatalogoModal"
+                                list="listCatalogoModal" class="form-control" placeholder="Seleccione Dirección" />
+                            <datalist id="listCatalogoModal"></datalist>
+                        </div>
+                    </div>
+                    <div class="collapse row" id="divLugaresModal">
+                        <div class="col-md-6">
+                            <h4 style="font-size:20px; font-weight:bold; color:gray">Ingrese Lugar:</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="lugarModal" name="ListaDeLugaresModal"
+                                list="listCatalogoLugaresModal" class="form-control" placeholder="Seleccione Lugar" />
+                            <datalist id="listCatalogoLugaresModal"></datalist>
+                        </div>
+                    </div>
+                </div>
+                <input hidden="hidden" id="txtRegistroCajonCambio" />
+            </div>
+            <div class="modal-footer">
+                <div class="row" style="text-align:center">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-primary" id="btnAsignarLugares"
+                            style="background-color:#1A5276; border-color:#1A5276"><b style="color:white">Asignar Cajón
+                            </b> <span style="color:white" class="far fa-edit"></span></button>
+                        <button type="button" class="collapse btn btn-primary" id="btnCambiarCajon"
+                            style="background-color:#1A5276; border-color:#1A5276"><b style="color:white">Cambiar Cajón
+                            </b> <span style="color:white" class="far fa-edit"></span></button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-primary" id="btnCerrarModalLugares"
+                            style="background-color:#1A5276; border-color:#1A5276"><b style="color:white">Cerrar </b>
+                            <span style="color:white" class="glyphicon glyphicon-chevron-down"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/alertifyjs/alertify.js"></script>
+<script>
+
+    function LugaresPorAsignar() {
+        $.ajax({
+
+            url: "/Estacionamiento/MostrarAsignacionesEstacionamientosVisitantesSinLugar_AJAX",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "JSON",
+            cache: false,
+
+            success: function (r) {
+                if (r.error == true) {
+                    alert(r.mensaje);
+                }
+                else {
+
+                    MostrarEstacionamientosVisitasAsigna(r.listaEstacionamientos);
+                    $("#divTablaVisitantesAsigna").show();
+                }
+            },
+
+            error: function (error) {
+                alert(error.responseText);
+            }
+        });
+    };
+
+    function FiltrarSolicitudesVisitantes() {
+        var fvDesde = $('#solFechaVisDesde').val();
+        var fvHasta = $('#solFechaVisHasta').val();
+        var hvDesde = $('#solHoraVisDesde').val();
+        var hvHasta = $('#solHoraVisHasta').val();
+        var hsDesde = $('#solHoraSalDesde').val();
+        var hsHasta = $('#solHoraSalHasta').val();
+
+        // Validar rango de fecha
+        if ((fvDesde && !fvHasta) || (!fvDesde && fvHasta)) {
+            alertify.error('Para filtrar por Fecha de Visita, captura el rango completo (Desde y Hasta).');
+            return;
+        }
+
+        var qs = $.param({
+            usuarioResponsable: $('#solRespFiltro').val(),
+            nombreVisitante: $('#solVisFiltro').val(),
+            horaVisitaDesde: hvDesde,
+            horaVisitaHasta: hvHasta,
+            horaSalidaDesde: hsDesde,
+            horaSalidaHasta: hsHasta,
+            placa: $('#solPlacaFiltro').val(),
+            fechaVisitaDesde: fvDesde,
+            fechaVisitaHasta: fvHasta
+        });
+        $.ajax({
+            url: '/Estacionamiento/MostrarAsignacionesVisitantesSinLugarConFiltros_AJAX?' + qs,
+            type: 'GET', contentType: 'application/json;charset=utf-8', dataType: 'JSON', cache: false,
+            success: function (r) {
+                if (r.error) { alertify.error(r.mensaje || 'Error filtros solicitudes'); }
+                else { MostrarEstacionamientosVisitasAsigna(r.listaEstacionamientos); $('#divTablaVisitantesAsigna').show(); }
+            },
+            error: function (e) { alert(e.responseText); }
+        });
+    }
+    function LimpiarFiltrosSolicitudesVisitantes() {
+        $('#solRespFiltro,#solVisFiltro,#solHoraVisDesde,#solHoraVisHasta,#solHoraSalDesde,#solHoraSalHasta,#solPlacaFiltro,#solFechaVisDesde,#solFechaVisHasta').val('');
+        FiltrarSolicitudesVisitantes();
+    }
+
+    function MostrarEstacionamientosVisitasAsigna(lista) {
+        debugger;
+        var filas = "";
+
+        $.each(lista, function (i, estaciona) {
+            debugger;
+
+            filas += '<tr style="border-bottom: 1px solid #E5E7EB">' +
+                '<td><p>' + estaciona.Lugares.sLugar + '</p></td>' +
+                '<td><p>' + estaciona.LugarDireccion.sLugar + '</p></td>' +
+                '<td><p>' + estaciona.Usuarios.sNombre + '</p></td>' +
+                '<td><p>' + estaciona.Usuarios.nombreResponsable + '</p></td>' +
+                '<td><p>' + estaciona.horaVisita + '</p></td>' +
+                '<td><p>' + estaciona.horaSalida + '</p></td>' +
+                '<td><p>' + estaciona.sPlaca + '</p></td>' +
+                '<td><p>' + estaciona.sModelo + '</p></td>' +
+                '<td><p>' + estaciona.sColor + '</p></td>' +
+                '<td><p>' + estaciona.dtFechaVisitaJSON + '</p></td>' +
+                '<td><p>' + estaciona.sObservaciones + '</p></td>' +
+                '<td><button class="btn btn-action btn-assign btn-compact" id="btnAsignarLugar" onclick="AsignarCajones(' + estaciona.uiRegistroCajones + ')">Asignar Lugar <span class="far fa-arrow-alt-circle-up"></span></button></td>' +
+                '<td><button class="btn btn-action btn-delete btn-compact" id="btnLiberar" onclick="EliminarSolicitud(' + estaciona.uiRegistroCajones + ')">Eliminar Solicitud <span class="far fa-window-close"></span></button></td>' +
+                '</tr>';
+        });
+
+        $("#tbodyVisitantesEstacionamientoAsigna").empty();
+        $("#tbodyVisitantesEstacionamientoAsigna").html(filas);
+        debugger;
+    };
+
+    function Limpiar() {
+        $("#numEmpleado").val("");
+        $("#nombreUser").val("");
+        $("#correoUser").val("");
+        $("#listCatalogoSeleccion").val("");
+        $("#lugar").val("");
+        $("#observacionesEsta").val("");
+        $("#txtParametroUser").val("");
+
+        $("#noEmpleadoSolicita").val("");
+        $("#nombreEmpleadoVisita").val("");
+        $("#correoEmpleadoVisita").val("");
+        $("#nombreVisita").val("");
+        $("#fechaVisita").val("");
+        $("#horaEntrada").val("");
+        $("#horaSalida").val("");
+        $("#observacionesEstaVisita").val("");
+        $("#lugarModal").val("");
+    };
+
+    $(document).ready(function () {
+
+        LugaresPorAsignar();
+
+        $("#btnBuscarUser").click(function () {
+
+            var parametroBusqueda = $("#txtParametroUser").val();
+
+            if (parametroBusqueda == "") {
+
+                var alert = alertify.alert("Error", "Debes ingresar un número de usuario para Búsqueda").set('label', 'Aceptar');
+                alert.set({ transition: 'zoom' }); //slide, zoom, flipx, flipy, fade, pulse (default)
+                alert.set('modal', false);  //al pulsar fuera del dialog se cierra o no
+            }
+            else {
+
+                $("#gifCargando").show();
+                $("#btnBuscarUser").prop("disabled", true);
+
+                $.ajax({
+
+                    url: "/Estacionamiento/BuscarUserAD_AJAX?parametroBusqueda=" + parametroBusqueda,
+                    type: "GET",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "JSON",
+                    cache: false,
+
+                    success: function (r) {
+
+                        if (r.error == true) {
+                            var alert = alertify.alert("Error", r.mensaje).set('label', 'Aceptar');
+                            alert.set({ transition: 'zoom' }); //slide, zoom, flipx, flipy, fade, pulse (default)
+                            alert.set('modal', false);  //al pulsar fuera del dialog se cierra o no
+                            $("#txtParametroUser").val("");
+                            $("#btnBuscarUser").prop("disabled", false);
+                            $("#gifCargando").hide();
+                        }
+                        else {
+
+                            $("#divUserAD").show();
+
+                            $("#numEmpleado").val(r.Usuario.uiNumeroEmpleado);
+                            $("#nombreUser").val(r.Usuario.sNombre);
+                            $("#correoUser").val(r.Usuario.sCorreo);
+
+                            $("#numEmpleado").prop("disabled", true);
+                            $("#nombreUser").prop("disabled", true);
+                            $("#correoUser").prop("disabled", true);
+
+                            $("#btnBuscarUser").prop("disabled", false);
+                            $("#gifCargando").hide();
+                            $("#btnGuardarLugarEmpleado").show();
+                        }
+
+                    },
+
+                    error: function (error) {
+                        alert(error.responseText);
+                    }
+
+                });
+            }
+
+        });
+
+
+
+        //$("#btnVisitantes").click(function () {
+
+        //    LugaresPorAsignar();
+        //});
+
+
+
+        $("#listCatalogoSeleccionModal").change(function () {
+
+
+            var arreglo = $("#listCatalogoSeleccionModal").val();
+            debugger;
+
+            var datos = arreglo.split('-');
+            var datoDireccion = datos[0];
+
+            debugger;
+
+            $.ajax({
+
+                url: "/Estacionamiento/MostrarCatalogoLugaresPorDireccionVisitantes_AJAX?direccion=" + datoDireccion,
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "JSON",
+                cache: false,
+
+                success: function (r) {
+                    if (r.error == true) {
+                        alert(r.mensaje);
+                    }
+                    else {
+
+                        $("#lugarModal").val("");
+                        $("#lugarModal").empty();
+
+                        $("#listCatalogoLugaresModal").empty();
+
+                        $.each(r.listaCalagos, function (i, catalogo) {
+
+                            //debugger;
+                            var option = $(document.createElement('option'));
+
+                            option.html(catalogo.sLugar);
+                            option.val(catalogo.sLugar);
+
+                            $("#listCatalogoLugaresModal").append(option);
+                        });
+
+                        $("#divLugaresModal").show();
+
+                        //Limpiar();
+                    }
+                },
+
+                error: function (error) {
+                    alert(error.responseText);
+                }
+            });
+
+        });
+
+        $("#btnAsignarLugares").click(function () {
+
+            var hayError = false;
+            var textoError = "";
+
+            if ($("#listCatalogoSeleccionModal").val() == "") {
+                hayError = true;
+                textoError += "Seleccione dirección de Estacionamiento\n";
+                $("#listCatalogoSeleccionModal").css("border", "2px solid red");
+            }
+            else {
+                $("#listCatalogoSeleccionModal").css("border", "");
+            }
+
+            if ($("#lugarModal").val() == "") {
+                hayError = true;
+                textoError += "Ingrese lugar\n";
+                $("#lugarModal").css("border", "2px solid red");
+            }
+            else {
+                $("#lugarModal").css("border", "");
+            }
+
+            if (hayError == true) {
+
+                alertify.error(textoError);
+                return false;
+
+                debugger;
+            }
+
+            var direccion = $("#listCatalogoSeleccionModal").val();
+
+            var arrregloDireccion = [];
+            arrregloDireccion = direccion.split('-');
+            var valorDireccion = arrregloDireccion[0];
+
+            var objetoAsignarLugar =
+            {
+                iCajon: valorDireccion,
+                sLugar: $("#lugarModal").val(),
+                uiRegistroCajones: $("#txtRegistroCajonNuevo").val(),
+            };
+
+            $.ajax({
+
+                url: "/Estacionamiento/AsignarCajonVisitante_AJAX",
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "JSON",
+                data: JSON.stringify(objetoAsignarLugar),
+                cache: false,
+
+                success: function (r) {
+                    if (r.error == true) {
+                        alert(r.mensaje);
+                    }
+                    else {
+
+                        alertify
+                            .alert("Se asignó el cajón exitosamente", function () {
+                                alertify.success('OK');
+                            });
+
+                        LugaresPorAsignar();
+                        $("#modalCajones").modal('hide');
+                    }
+                },
+            });
+
+        });
+
+        $("#btnCambiarCajon").click(function () {
+
+            var hayError = false;
+            var textoError = "";
+
+            if ($("#listCatalogoSeleccionModal").val() == "") {
+                hayError = true;
+                textoError += "Seleccione dirección de Estacionamiento\n";
+                $("#listCatalogoSeleccionModal").css("border", "2px solid red");
+            }
+            else {
+                $("#listCatalogoSeleccionModal").css("border", "");
+            }
+
+            if ($("#lugarModal").val() == "") {
+                hayError = true;
+                textoError += "Ingrese lugar\n";
+                $("#lugarModal").css("border", "2px solid red");
+            }
+            else {
+                $("#lugarModal").css("border", "");
+            }
+
+            if (hayError == true) {
+
+                alertify.error(textoError);
+                return false;
+
+                debugger;
+            }
+
+            var direccion = $("#listCatalogoSeleccionModal").val();
+
+            var arrregloDireccion = [];
+            arrregloDireccion = direccion.split('-');
+            var valorDireccion = arrregloDireccion[0];
+
+            var objetoAsignarLugar =
+            {
+                iCajon: valorDireccion,
+                sLugar: $("#lugarModal").val(),
+                uiRegistroCajones: $("#txtRegistroCajonCambio").val(),
+            };
+
+            $.ajax({
+
+                url: "/Estacionamiento/CambiarCajonVisitante_AJAX",
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "JSON",
+                data: JSON.stringify(objetoAsignarLugar),
+                cache: false,
+
+                success: function (r) {
+                    if (r.error == true) {
+                        alert(r.mensaje);
+                    }
+                    else {
+
+                        alertify
+                            .alert("Se asignó el cajón exitosamente", function () {
+                                alertify.success('OK');
+                            });
+
+                        LugaresAsignadosVisitantes();
+                        $("#modalCajones").modal('hide');
+                        $("#txtRegistroCajonCambio").val("")
+                    }
+                },
+            });
+
+        });
+
+        $("#btnCerrarModalLugares").click(function () {
+
+            $("#modalCajones").modal('hide');
+        });
+    });
+
+    function AsignarCajones(ID) {
+
+        $.ajax({
+
+            url: "/Estacionamiento/MostrarCatalogoLugaresVisitante_AJAX",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "JSON",
+            cache: false,
+
+            success: function (r) {
+                if (r.error == true) {
+                    alert(r.mensaje);
+                }
+                else {
+
+                    $("#modalCajones").modal('show');
+                    $("#btnCambiarCajon").hide();
+                    $("#btnAsignarLugares").show();
+                    $("#txtRegistroCajonNuevo").val(ID);
+                    $("#listCatalogoSeleccionModal").val("");
+                    $("#listCatalogoSeleccionModal").empty();
+
+                    $("#listCatalogoModal").empty();
+
+                    $.each(r.listaCalagos, function (i, catalogo) {
+
+                        //debugger;
+                        var option = $(document.createElement('option'));
+
+                        option.html(catalogo.sNombreCliente);
+                        option.val(catalogo.uiRegistroCatalogo + "-" + catalogo.sLugar);
+
+                        $("#listCatalogoModal").append(option);
+                    });
+
+                    Limpiar();
+                }
+            },
+
+            error: function (error) {
+                alert(error.responseText);
+            }
+        });
+    };
+
+    function EliminarSolicitud(ID) {
+
+        var confirm = alertify.confirm('Eliminar Solicitud', '¿Estás seguro de eliminar la soliictud de Cajón de Estacionamiento?', null, null).set('labels', { ok: 'Confirmar', cancel: 'Cancelar' });
+
+        confirm.set({ transition: 'slide' });
+
+        confirm.set('onok', function () {
+
+            $.ajax({
+
+                url: "/Estacionamiento/EliminarSolicitud_AJAX?solicitud=" + ID,
+                type: "GET",
+                contentTYpe: "application/json;charset=utf-8",
+                dataType: "JSON",
+                cache: false,
+
+                success: function (r) {
+                    if (r.error == true) {
+                        alert(r.mensaje);
+                    }
+                    else {
+                        alertify.success("Se eliminó la solicitud correctamente");
+                        LugaresPorAsignar();
+                    }
+                },
+
+                error: function (error) {
+                    alert(error.responseText);
+                }
+            });
+
+        });
+
+        confirm.set('oncancel', function () {
+            debugger;
+        });
+
+    }
+</script>

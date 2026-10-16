@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://servicios.grupofarmacos.com/FAR/Schema/Tipos/HR/EmpleadosSvc/v1" xmlns:emp="http://servicios.grupofarmacos.com/FAR/Schema/FAREmpleados" xmlns:dat="http://servicios.grupofarmacos.com/FAR/Schema/FARDatosEmpleado" elementFormDefault="qualified" targetNamespace="http://servicios.grupofarmacos.com/FAR/Schema/Tipos/HR/EmpleadosSvc/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFAREmpleadosXSD" namespace="http://servicios.grupofarmacos.com/FAR/Schema/FAREmpleados" />
+  <xsd:import schemaLocation="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFARDatosEmpleadoXSD" namespace="http://servicios.grupofarmacos.com/FAR/Schema/FARDatosEmpleado" />
+  <xsd:complexType name="AltaProveedorRequestType">
+    <xsd:sequence>
+      <xsd:element ref="dat:idHCM" />
+      <xsd:element ref="emp:empleados" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AltaProveedorResponseType">
+    <xsd:sequence>
+      <xsd:element ref="codigo" />
+      <xsd:element ref="emp:descripcion" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EnviarNovedadesRequestType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="emp:fechaActualizacion" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EnviarNovedadesResponseType">
+    <xsd:sequence>
+      <xsd:element ref="emp:codigo" />
+      <xsd:element ref="emp:descripcion" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="codigo" type="xsd:int" />
+  <xsd:complexType name="EnviarEmpleadosType">
+    <xsd:sequence>
+      <xsd:element name="calendarizado" type="xsd:boolean" />
+      <xsd:element name="empleados" type="EmpleadosListaType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EmpleadosListaType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="empleado" type="ProveedorType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProveedorType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="datosHCM" type="dat:HcmMinType" />
+      <xsd:element minOccurs="0" name="datosProveedor" type="dat:ProveedorType" />
+      <xsd:element minOccurs="0" name="datosTimbrado" type="dat:TimbradoType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ObtenerFastInputType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="emp:personNumber" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ObtenerFastOutputType">
+    <xsd:sequence>
+      <xsd:element name="empleado" type="DatosFastType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DatosFastType">
+    <xsd:sequence>
+      <xsd:element ref="emp:informacionBasica" />
+      <xsd:element name="aprobador1" type="AprobadorType" />
+      <xsd:element name="aprobador2" type="AprobadorType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AprobadorType">
+    <xsd:sequence>
+      <xsd:element ref="emp:idEmpleado" />
+      <xsd:element ref="emp:nombre" />
+      <xsd:element ref="emp:apellidoPaterno" />
+      <xsd:element ref="emp:apellidoMaterno" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="obtenerIdEmpleadoRequestType">
+    <xsd:sequence minOccurs="0">
+      <xsd:element minOccurs="1" ref="emp:nombre" />
+      <xsd:element minOccurs="1" ref="emp:apellidoPaterno" />
+      <xsd:element minOccurs="1" ref="emp:apellidoMaterno" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="obtenerIdEmpleadoResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="empleado" type="ObtenerIdEmpleadoResType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ObtenerIdEmpleadoResType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="emp:nombre" />
+      <xsd:element minOccurs="0" ref="emp:apellidoPaterno" />
+      <xsd:element minOccurs="0" ref="emp:apellidoMaterno" />
+      <xsd:element minOccurs="0" ref="emp:personId" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EnviarEmpleadoNovedadesType">
+    <xsd:sequence>
+      <xsd:element name="empleado" type="ProveedorType" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

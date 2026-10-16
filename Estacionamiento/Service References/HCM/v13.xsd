@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" xmlns:FARsm="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="messageError" type="FARsm:MessageError" />
+  <xsd:element name="messageResponse" type="FARsm:MessageResponse" />
+  <xsd:complexType name="MessageError">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="codigoError" type="xsd:string" />
+      <xsd:element minOccurs="0" name="descripcionError" type="xsd:string" />
+      <xsd:element minOccurs="0" name="tipoError" type="xsd:string" />
+      <xsd:element minOccurs="0" name="severidad" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MessageResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="code" type="xsd:string" />
+      <xsd:element minOccurs="0" name="message" type="xsd:string" />
+      <xsd:element minOccurs="0" name="detail" type="xsd:string" />
+      <xsd:element minOccurs="0" name="dateTime" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="orderNum" type="xsd:string" />
+      <xsd:element minOccurs="0" name="soaId" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ebsId" type="xsd:string" />
+      <xsd:element minOccurs="0" name="appId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

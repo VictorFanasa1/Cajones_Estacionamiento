@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://servicios.grupofarmacos.com/FAR/Schema/FAREmpleados" elementFormDefault="qualified" targetNamespace="http://servicios.grupofarmacos.com/FAR/Schema/FAREmpleados" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="InformacionBasicaType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="idEmpleado" />
+      <xsd:element minOccurs="0" ref="nombre" />
+      <xsd:element minOccurs="0" ref="apellidoPaterno" />
+      <xsd:element minOccurs="0" ref="apellidoMaterno" />
+      <xsd:element minOccurs="0" ref="descripcion" />
+      <xsd:element minOccurs="0" ref="departamento" />
+      <xsd:element minOccurs="0" ref="posicion" />
+      <xsd:element minOccurs="0" ref="lugarTrabajo" />
+      <xsd:element minOccurs="0" ref="status" />
+      <xsd:element minOccurs="0" ref="nivel" />
+      <xsd:element minOccurs="0" ref="descripcionEmpresa" />
+      <xsd:element minOccurs="0" ref="empresa" />
+      <xsd:element minOccurs="0" ref="centroCostos" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="informacionBasica" type="InformacionBasicaType" />
+  <xsd:element name="idEmpleado" type="xsd:integer" />
+  <xsd:element name="personId" type="xsd:string" />
+  <xsd:element name="numEmpleado" type="numEmpleadoType" />
+  <xsd:element name="nombre" type="xsd:string" />
+  <xsd:element name="apellidoPaterno" type="xsd:string" />
+  <xsd:element name="apellidoMaterno" type="xsd:string" />
+  <xsd:element name="segundoNombre" type="xsd:string" />
+  <xsd:element name="fechaEfectiva" type="FechaType" />
+  <xsd:element name="tipoEmpleado" type="tipoEmpleadoType" />
+  <xsd:element name="estatusEmpleado" type="estatusEmpleadoType" />
+  <xsd:element name="descripcion" type="xsd:string" />
+  <xsd:element name="departamento" type="xsd:string" />
+  <xsd:element name="posicion" type="xsd:string" />
+  <xsd:element name="lugarTrabajo" type="xsd:string" />
+  <xsd:element name="status" type="xsd:string" />
+  <xsd:element name="nivel" type="xsd:string" />
+  <xsd:element name="descripcionEmpresa" type="xsd:string" />
+  <xsd:element name="empresa" type="xsd:string" />
+  <xsd:element name="centroCostos" type="xsd:string" />
+  <xsd:element name="fechaActualizacionMin" type="xsd:dateTime" />
+  <xsd:element name="fechaActualizacionMax" type="xsd:dateTime" />
+  <xsd:element name="codigo" type="xsd:int" />
+  <xsd:element name="fechaActualizacion" type="xsd:dateTime" />
+  <xsd:element name="personName" type="xsd:string" />
+  <xsd:element name="fechaInicioEfectiva" type="FechaType" />
+  <xsd:element name="email" type="xsd:string" />
+  <xsd:element name="genero" type="xsd:string" />
+  <xsd:element name="generoAnt" type="xsd:string" />
+  <xsd:element name="personNumber" type="xsd:string" />
+  <xsd:element name="fechaNacimiento" type="FechaType" />
+  <xsd:element name="rfc" type="xsd:string" />
+  <xsd:element name="curp" type="xsd:string" />
+  <xsd:element name="nss" type="xsd:string" />
+  <xsd:element name="estadoCivil" type="xsd:string" />
+  <xsd:element name="fechaProceso" type="FechaType" />
+  <xsd:element name="fechaBaja" type="FechaType" />
+  <xsd:element name="motivoBaja" type="xsd:string" />
+  <xsd:element name="fechaIngreso" type="FechaType" />
+  <xsd:element name="fechaAntiguedad" type="FechaType" />
+  <xsd:element name="fechaAltaNSS" type="FechaType" />
+  <xsd:element name="pais" type="xsd:string" />
+  <xsd:element name="estado" type="xsd:string" />
+  <xsd:element name="calle" type="xsd:string" />
+  <xsd:element name="colonia" type="xsd:string" />
+  <xsd:element name="codigoPostal" type="xsd:string" />
+  <xsd:element name="municipio" type="xsd:string" />
+  <xsd:element name="telefonoFijo" type="xsd:string" />
+  <xsd:element name="celular" type="xsd:string" />
+  <xsd:element name="claveAcceso" type="xsd:string" />
+  <xsd:element name="setId" type="xsd:string" />
+  <xsd:element name="nombreEmpresa" type="xsd:string" />
+  <xsd:element name="direccion" type="DireccionType" />
+  <xsd:element name="cuentaGastos" type="xsd:string" />
+  <xsd:element name="cuentaPago" type="xsd:string" />
+  <xsd:element name="cuentaPasivo" type="xsd:string" />
+  <xsd:element name="salarioDiario" type="xsd:decimal" />
+  <xsd:element name="salarioMensual" type="xsd:decimal" />
+  <xsd:element name="rfcSubContratacion" type="xsd:string" />
+  <xsd:complexType name="EmpleadoType">
+    <xsd:sequence>
+      <xsd:element ref="fechaEfectiva" />
+      <xsd:element ref="idEmpleado" />
+      <xsd:element ref="tipoEmpleado" />
+      <xsd:element ref="estatusEmpleado" />
+      <xsd:element ref="cuentaGastos" />
+      <xsd:element ref="cuentaPago" />
+      <xsd:element ref="cuentaPasivo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EmpleadosListaType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" ref="empleado" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="empleado" type="EmpleadoType" />
+  <xsd:element name="empleados" type="EmpleadosListaType" />
+  <xsd:simpleType name="FechaType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="(\d{4}-\d{2}-\d{2})" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="numEmpleadoType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="30" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="tipoEmpleadoType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="3" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="estatusEmpleadoType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="9" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DireccionType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="pais" />
+      <xsd:element minOccurs="0" ref="estado" />
+      <xsd:element minOccurs="0" ref="calle" />
+      <xsd:element minOccurs="0" ref="colonia" />
+      <xsd:element minOccurs="0" ref="codigoPostal" />
+      <xsd:element minOccurs="0" ref="municipio" />
+      <xsd:element minOccurs="0" ref="telefonoFijo" />
+      <xsd:element minOccurs="0" ref="celular" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

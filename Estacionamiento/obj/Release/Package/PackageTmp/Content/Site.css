@@ -1,0 +1,69 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('../Font/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('../Font/Roboto-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-Black';
+    src: url('../Font/Roboto-Black.ttf') format('truetype');
+}
+
+h1{
+    font-family:Roboto-Black
+}
+
+h2{
+    font-family:Roboto-Black
+}
+
+h3 {
+    font-family:Roboto-Black
+}
+
+h4 {
+    font-family:Roboto-Black
+}
+
+h5 {
+    font-family:Roboto-Black
+}
+
+label {
+    font-family:Roboto-Regular
+}
+
+b{
+    font-family:Roboto-Regular
+}
+
+p{
+    font-family:Roboto-Regular
+}
+
+span{
+    font-family:Roboto-Regular
+}
+

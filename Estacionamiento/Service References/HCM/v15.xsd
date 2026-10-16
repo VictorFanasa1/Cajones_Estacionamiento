@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" xmlns:FARsh="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="headerMessage" type="FARsh:HeaderMessage" />
+  <xsd:element name="headerMessageResponse" type="FARsh:HeaderMessageResponse" />
+  <xsd:complexType name="HeaderMessage">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="nombreUsuario" type="xsd:string" />
+      <xsd:element minOccurs="0" name="idSucursal" type="xsd:string" />
+      <xsd:element minOccurs="0" name="usuario" type="xsd:string" />
+      <xsd:element minOccurs="1" name="applicationRequester" type="xsd:string" />
+      <xsd:element minOccurs="0" name="idDestino" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HeaderMessageResponse">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="FARsh:HeaderMessage">
+        <xsd:sequence>
+          <xsd:element name="codigoRespuesta" type="xsd:int" />
+          <xsd:element name="descripcionRespuesta" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

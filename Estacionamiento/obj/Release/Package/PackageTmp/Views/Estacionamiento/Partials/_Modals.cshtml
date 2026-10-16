@@ -1,0 +1,70 @@
+@* Modales de Asignación/Cambio de cajón y Edición de hora *@
+<div class="modal fade" id="modalCajones" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" style="justify-content:center">
+    <div class="modal-content" style="border:#1A5276 2px solid; align-items:center;">
+      <div class="modal-body">
+        <div style="text-align:center">
+          <div class="row">
+            <input hidden="hidden" id="txtRegistroCajonNuevo" />
+            <div class="col-md-6">
+              <h4 style="font-size:20px; font-weight:bold; color:gray">Seleccione Dirección de Estacionamiento:</h4>
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="listCatalogoSeleccionModal" name="ListaDeCatalogoModal" list="listCatalogoModal" class="form-control" placeholder="Seleccione Dirección" />
+              <datalist id="listCatalogoModal"></datalist>
+            </div>
+          </div>
+          <div class="collapse row" id="divLugaresModal">
+            <div class="col-md-6">
+              <h4 style="font-size:20px; font-weight:bold; color:gray">Ingrese Lugar:</h4>
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="lugarModal" name="ListaDeLugaresModal" list="listCatalogoLugaresModal" class="form-control" placeholder="Seleccione Lugar" />
+              <datalist id="listCatalogoLugaresModal"></datalist>
+            </div>
+          </div>
+        </div>
+        <input hidden="hidden" id="txtRegistroCajonCambio" />
+      </div>
+      <div class="modal-footer">
+        <div class="row" style="text-align:center">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary" id="btnAsignarLugares" style="background-color:#1A5276; border-color:#1A5276"><b style="color:white">Asignar Cajón</b> <span style="color:white" class="far fa-edit"></span></button>
+            <button type="button" class="collapse btn btn-primary" id="btnCambiarCajon" style="background-color:#1A5276; border-color:#1A5276"><b style="color:white">Cambiar Cajón</b> <span style="color:white" class="far fa-edit"></span></button>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary" id="btnCerrarModalLugares" style="background-color:#1A5276; border-color:#1A5276"><b style="color:white">Cerrar </b><span style="color:white" class="glyphicon glyphicon-chevron-down"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalHora" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" style="justify-content:center">
+    <div class="modal-content" style="border:#1A5276 2px solid; align-items:center;">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <b style="font-size:18px">Hora Salida</b>
+          </div>
+          <div class="col-md-6">
+            <input hidden="hidden" id="txtRegistroCajon" />
+            <input type="time" class="form-control" id="horaSalidaUpdate" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="row" style="text-align:center">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary" id="btnEditarHorario" style="background-color:#1A5276; border-color:#1A5276"><b style="color:white">Editar </b><span style="color:white" class="far fa-edit"></span></button>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary" id="btnCerrarModalHora" style="background-color:#1A5276; border-color:#1A5276"><b style="color:white">Cerrar </b><span style="color:white" class="glyphicon glyphicon-chevron-down"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

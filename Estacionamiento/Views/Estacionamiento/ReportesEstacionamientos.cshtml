@@ -1,0 +1,246 @@
+﻿@{
+    ViewBag.Title = "ReportesEstacionamientos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* Estilos del toolbar movidos a ~/Content/estacionamiento.css *@
+
+<div class="page-toolbar">
+    <div class="left">
+        <a href="@Url.Action("AdmEstacionamientos", "Estacionamiento")" class="back-link" title="Regresar">
+            <i class="fa fa-arrow-left fa-lg"></i>
+        </a>
+        <h1 class="toolbar-title">Reporte de Estacionamientos</h1>
+    </div>
+    <div class="right"></div>
+
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-file-excel-o"></i> Reporte de Asignaciones (Internos)</h3>
+            </div>
+            <div class="panel-body">
+                <p>Descarga el historial de asignaciones de empleados.</p>
+                <form id="formInternos" class="" method="get" action="@Url.Action("ExportAsignacionesExcel", "Estacionamiento")">
+                    <div class="form-group">
+                        <label for="texto">Buscar (Nombre, Correo, #Empleado)</label>
+                        <input type="text" name="texto" id="texto" class="form-control" placeholder="Opcional" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fechaDesde">Fecha Desde</label>
+                                <input type="date" name="fechaDesde" id="fechaDesde" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fechaHasta">Fecha Hasta</label>
+                                <input type="date" name="fechaHasta" id="fechaHasta" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <button type="button" id="btnDescargarInternos" class="btn btn-primary btn-block"><i class="fa fa-file-excel-o"></i> Descargar Excel</button>
+                    <button type="button" id="btnLimpiarAsignaciones" class="btn btn-danget btn-block">Limpiar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-file-excel-o"></i> Reporte de Visitantes</h3>
+            </div>
+            <div class="panel-body">
+                <p>Descarga el historial de visitas registradas.</p>
+                <form class="" method="get" action="@Url.Action("ExportVisitantesExcel", "Estacionamiento")"  id="formVisitantes">
+                        <div class="form-group">
+                        <label for="texto2">Buscar (Visitante, Responsable, Placa)</label>
+                        <input type="text" name="texto" id="texto2" class="form-control" placeholder="Opcional" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fechaDesde2">Visita Desde</label>
+                                <input type="date" name="fechaDesde" id="fechaDesde2" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fechaHasta2">Visita Hasta</label>
+                                <input type="date" name="fechaHasta" id="fechaHasta2" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <button type="submit" class="btn btn-success btn-block"><i class="fa fa-file-excel-o"></i> Descargar Excel</button>
+                    <button type="button" id="btnLimpiarVisitantes" class="btn btn-danget btn-block">Limpiar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-warning" style="border-color: #f0ad4e;">
+            <div class="panel-heading" style="background-color: #f0ad4e; color: white;">
+                <h3 class="panel-title"><i class="fa fa-list-alt"></i> Reporte de Log</h3>
+            </div>
+            <div class="panel-body">
+                <p>Descarga la extracción completa de acciones del log.</p>
+                <form id="formLog" class="" method="get" action="@Url.Action("ExportLogExcel", "Estacionamiento")">
+                    <div class="form-group">
+                        <label for="textoLog">Acción</label>
+                        <select name="texto" id="textoLog" class="form-control">
+                            <option value="" disabled selected></option>
+                            <option value="Generación de Solicitud">Generación de Solicitud</option>
+                            <option value="Asignación de Solicitud">Asignación de Solicitud</option>
+                            <option value="Rechazo de Solicitud">Rechazo de Solicitud</option>
+                            <option value="Asignación Empleado">Asignación Empleado</option>
+                            <option value="Liberación de Cajón">Liberación de Cajón</option>
+                            <option value="Edición de Lugar">Edición de Lugar</option>
+                            <option value="Edición Hora de Salida">Edición Hora de Salida</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fechaLogDesde">Fecha Desde</label>
+                                <input type="date" name="fechaDesde" id="fechaLogDesde" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fechaLogHasta">Fecha Hasta</label>
+                                <input type="date" name="fechaHasta" id="fechaLogHasta" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <button type="button" id="btnDescargarLog" class="btn btn-warning btn-block" style="background-color: #f0ad4e; color: white; border-color: #eea236;"><i class="fa fa-file-excel-o"></i> Descargar Excel</button>
+                    <button type="button" id="btnLimpiarLog" class="btn btn-danget btn-block">Limpiar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+@section scripts{
+    <script src="~/alertifyjs/alertify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnLimpiarLog").click(function(e)
+            {
+                $("#formLog")[0].reset()
+            })
+            $("#btnLimpiarVisitantes").click(function (e) {
+                $("#formVisitantes")[0].reset()
+            })
+            $("#btnLimpiarAsignaciones").click(function (e) {
+                $("#formInternos")[0].reset()
+            })
+            $("#formVisitantes").submit(function (e) {
+                var fDesde = $("#fechaDesde2").val();
+                var fHasta = $("#fechaHasta2").val();
+
+                // Validar que si hay una fecha, estén ambas
+                if ((fDesde && !fHasta) || (!fDesde && fHasta)) {
+                    e.preventDefault()
+                    alertify.error('Por favor selecciona ambas fechas para el rango.');
+                    return;
+                }
+            });
+            $("#btnDescargarInternos").click(function () {
+                var texto = $("#texto").val();
+                var fDesde = $("#fechaDesde").val();
+                var fHasta = $("#fechaHasta").val();
+
+                // Validar que si hay una fecha, estén ambas
+                if ((fDesde && !fHasta) || (!fDesde && fHasta)) {
+                    alertify.error('Por favor selecciona ambas fechas para el rango.');
+                    return;
+                }
+                // Opcional: Validar rango de fechas si se desea
+                // if ((fDesde && !fHasta) || (!fDesde && fHasta)) {
+                //     alertify.error('Por favor selecciona ambas fechas para el rango.');
+                //     return;
+                // }
+
+                var qs = $.param({
+                    texto: texto,
+                    fechaDesde: fDesde,
+                    fechaHasta: fHasta
+                });
+
+                $.ajax({
+                    url: '/Estacionamiento/MostrarAsignacionesEstacionamientosFiltrado_AJAX?' + qs,
+                    type: 'GET',
+                    contentType: 'application/json;charset=utf-8',
+                    dataType: 'JSON',
+                    cache: false,
+                    success: function (r) {
+                        if (r.error) {
+                            alertify.error(r.mensaje || 'Error al validar datos');
+                        } else {
+                            if (r.listaEstacionamientos && r.listaEstacionamientos.length > 0) {
+                                // Hay datos, proceder con el submit del form para la descarga
+                                $("#formInternos").submit();
+                            } else {
+                                // No hay datos
+                                alertify.error("No se encontró información con los Datos seleccionados.");
+                            }
+                        }
+                    },
+                    error: function (e) {
+                        alertify.error("Error de conexión al verificar datos.");
+                    }
+                });
+            });
+
+            $("#btnDescargarLog").click(function () {
+                var texto = $("#textoLog").val();
+                var fDesde = $("#fechaLogDesde").val();
+                var fHasta = $("#fechaLogHasta").val();
+
+                // Validar que si hay una fecha, estén ambas
+                if ((fDesde && !fHasta) || (!fDesde && fHasta)) {
+                    alertify.error('Por favor selecciona ambas fechas para el rango.');
+                    return;
+                }
+
+                var qs = $.param({
+                    texto: texto,
+                    fechaDesde: fDesde,
+                    fechaHasta: fHasta
+                });
+
+                $.ajax({
+                    url: '/Estacionamiento/MostrarLogsFiltrado_AJAX?' + qs,
+                    type: 'GET',
+                    contentType: 'application/json;charset=utf-8',
+                    dataType: 'JSON',
+                    cache: false,
+                    success: function (r) {
+                        if (r.error) {
+                            alertify.error(r.mensaje || 'Error al validar datos');
+                        } else {
+                            if (r.listaLogs && r.listaLogs.length > 0) {
+                                $("#formLog").submit();
+                            } else {
+                                alertify.error("No se encontró información de log con los criterios seleccionados.");
+                            }
+                        }
+                    },
+                    error: function (e) {
+                        alertify.error("Error de conexión al verificar datos de log.");
+                    }
+                });
+            });
+        });
+    </script>
+}

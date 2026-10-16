@@ -1,0 +1,154 @@
+@{
+    var __log = Session["log"];
+    dynamic __user = null;
+    bool __hasLog = false;
+    if (__log != null) { __user = __log; __hasLog = true; }
+    // Force the card to be visible so UI updates/fallback lookups are observable.
+    // If a session user is not present, show a loading placeholder while the
+    // client-side AJAX fallback runs.
+    string __style = ""; // always render visible
+                         // prepare a normalized username for client scripts (DOMAIN\user -> user, user@domain -> user)
+    string __normalizedUser = String.Empty;
+    if (User != null && User.Identity != null && !String.IsNullOrEmpty(User.Identity.Name))
+    {
+        __normalizedUser = User.Identity.Name;
+        var bsidx = __normalizedUser.IndexOf('\\');
+        if (bsidx >= 0 && bsidx + 1 < __normalizedUser.Length)
+        {
+            __normalizedUser = __normalizedUser.Substring(bsidx + 1);
+        }
+        var atidx = __normalizedUser.IndexOf('@');
+        if (atidx > 0)
+        {
+            __normalizedUser = __normalizedUser.Substring(0, atidx);
+        }
+    }
+    string safeName = __hasLog ? (Convert.ToString(__user.sNombre) ?? "-") : (!String.IsNullOrEmpty(__normalizedUser) ?
+    __normalizedUser : "Cargando...");
+    string safe = __hasLog ? "-" : "Cargando...";
+}
+
+<div id="solicitanteCard" class="panel panel-default"
+    style="@__style margin:16px; padding:12px; border-radius:6px; background:#fff; box-shadow: 0 1px 6px rgba(0,0,0,.06); border:2px solid #f39c12;">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4 id="solicitanteNombre" style="margin:0; font-weight:700; color:#1A5276;">@(__hasLog ? (__user.sNombre ??
+                                safeName) : safeName)</h4>
+            <div style="font-size:13px; color:#333; margin-top:6px;">
+                <span id="solicitantePuesto"><strong>Puesto:</strong> @(__hasLog ? (__user.Puesto ?? safe) :
+                                        safe)</span>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <span id="solicitanteJefe"><strong>Jefe Directo:</strong> @(__hasLog ? (__user.JefeDirecto ?? safe) :
+                                        safe)</span>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <span id="solicitanteUEN"><strong>UEN:</strong> @(__hasLog ? (__user.UEN ?? safe) : safe)</span>
+            </div>
+            <div style="font-size:12px; color:#666; margin-top:6px;">
+                <span id="solicitanteNumero"><strong>No. Empleado:</strong> @(__hasLog ?
+                                        (__user.uiNumeroEmpleado?.ToString() ?? safe) : safe)</span>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <span id="solicitanteCorreo"><strong>Correo:</strong> @(__hasLog ? (__user.sCorreo ?? safe) :
+                                        safe)</span>
+            </div>
+        </div>
+        <!-- informational card: no actions -->
+        <div class="col-sm-3 text-right" style="align-self:center;">
+            <div id="solicitanteSpinner" style="display:none;">
+                <span class="fas fa-spinner fa-pulse" style="font-size:18px; color:#1A5276"></span>
+            </div>
+
+        </div>
+    </div>
+</div>
+@if (__hasLog)
+{
+    <script type="text/javascript">
+        (function () {
+            try {
+                var num = '@(__user.uiNumeroEmpleado)';
+                var nombre = '@(__user.sNombre)'.replace(/'/g, "\\'");
+                var correo = '@(__user.sCorreo)'.replace(/'/g, "\\'");
+                document.addEventListener('DOMContentLoaded', function () {
+                    try {
+                        var input = document.getElementById('noEmpleadoSolicita');
+                        if (input) {
+                            input.value = num;
+                            input.style.border = '';
+                        }
+                        var divNom = document.getElementById('divNombreEmpleado');
+                        if (divNom) divNom.style.display = 'block';
+                        var nom = document.getElementById('nombreEmpleadoVisita');
+                        if (nom) nom.value = nombre;
+                        var correoEl = document.getElementById('correoEmpleadoVisita');
+                        if (correoEl) correoEl.value = correo;
+                        // ensure card is visible when session provided
+                        var card = document.getElementById('solicitanteCard');
+                        if (card) card.style.display = '';
+                    } catch (e) { console && console.error && console.error(e); }
+                });
+            } catch (e) { console && console.error && console.error(e); }
+        })();
+    </script>
+}
+else
+{
+    <script type="text/javascript">
+        // Inject normalized username safely and run client-side lookup
+        (function () {
+            try {
+                var uname = @Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize((object)(__normalizedUser ?? "")));
+                window.userIdentityNameNormalized = uname;
+
+                document.addEventListener('DOMContentLoaded', function () {
+                    try {
+                        if (!uname) return;
+                        // show spinner while loading
+                        var spinner = document.getElementById('solicitanteSpinner');
+                        var retry = document.getElementById('solicitanteRetry');
+                        if (spinner) spinner.style.display = '';
+                        if (retry) retry.style.display = 'none';
+
+                        var url = '/Estacionamiento/BuscarUserAD_AJAX?parametroBusqueda=' + encodeURIComponent(uname);
+                        fetch(url, { credentials: 'same-origin' })
+                            .then(function (res) { return res.json(); })
+                            .then(function (r) {
+                                try {
+                                    if (spinner) spinner.style.display = 'none';
+                                    if (r && !r.error && r.Usuario) {
+                                        var u = r.Usuario;
+                                        var nameEl = document.getElementById('solicitanteNombre');
+                                        if (nameEl) nameEl.textContent = u.sNombre || '-';
+                                        var puesto = document.getElementById('solicitantePuesto');
+                                        if (puesto) puesto.innerHTML = '<strong>Puesto:</strong> ' + (u.Puesto || '-');
+                                        var jefe = document.getElementById('solicitanteJefe');
+                                        if (jefe) jefe.innerHTML = '<strong>Jefe Directo:</strong> ' + (u.JefeDirecto || '-');
+                                        var uen = document.getElementById('solicitanteUEN');
+                                        if (uen) uen.innerHTML = '<strong>UEN:</strong> ' + (u.UEN || '-');
+                                        var num = document.getElementById('solicitanteNumero');
+                                        if (num) num.innerHTML = '<strong>No. Empleado:</strong> ' + (u.uiNumeroEmpleado || '-');
+                                        var correo = document.getElementById('solicitanteCorreo');
+                                        if (correo) correo.innerHTML = '<strong>Correo:</strong> ' + (u.sCorreo || '-');
+                                        var card = document.getElementById('solicitanteCard');
+                                        if (card) card.style.display = '';
+                                        // also prefill form fields if present
+                                        var input = document.getElementById('noEmpleadoSolicita');
+                                        if (input && u.uiNumeroEmpleado) input.value = u.uiNumeroEmpleado;
+                                        var nom = document.getElementById('nombreEmpleadoVisita');
+                                        if (nom && u.sNombre) nom.value = u.sNombre;
+                                        var correoEl = document.getElementById('correoEmpleadoVisita');
+                                        if (correoEl && u.sCorreo) correoEl.value = u.sCorreo;
+                                    } else {
+                                        if (retry) retry.style.display = '';
+                                    }
+                                } catch (e) { console && console.error && console.error(e); }
+                            })
+                            .catch(function () {
+                                if (spinner) spinner.style.display = 'none';
+                                if (retry) retry.style.display = '';
+                            });
+                    } catch (e) { console && console.error && console.error(e); }
+                });
+            } catch (e) { console && console.error && console.error(e); }
+        })();
+    </script>
+}

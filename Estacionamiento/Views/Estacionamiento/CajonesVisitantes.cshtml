@@ -1,0 +1,253 @@
+﻿@model List<MEstacionamiento>
+@{
+    ViewBag.Title = "Cajones Visitantes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    th,
+    td {
+        vertical-align: text-top;
+        text-align: center;
+    }
+
+    th {
+        vertical-align: bottom;
+        color: white;
+    }
+
+
+    /* Fixed Headers */
+
+    th {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background-color: #1A5276;
+    }
+
+    th[scope=row] {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 1;
+    }
+
+    th[scope=row] {
+        vertical-align: top;
+    }
+
+    table:nth-of-type(2) th:not([scope=row]):first-child {
+        left: 0;
+        z-index: 3;
+    }
+
+    /* Strictly for making the scrolling happen. */
+
+    th[scope=row]+td {
+        min-width: 24em;
+    }
+
+    th[scope=row] {
+        min-width: 20em;
+    }
+
+    .divScroll {
+        /* definir una altura pequeña para forzar el scroll */
+        height: 500px;
+        overflow-y: scroll;
+    }
+
+    .divScrollOne {
+        overflow-x: scroll;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #1A5276;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        /*background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent)*/
+        /*background-image: -webkit-linear-gradient(90deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent)*/
+    }
+
+    /*Desactivar las flechas en campo tipo number*/
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+@* Navbar/Header viene del layout compartido *@
+
+<h2 style="color:#283747; text-align:center; font-weight:bold">CAJONES DE VISITANTES</h2>
+<br />
+
+<div class="container" style="text-align:center">
+    <button class="btn btn-success" id="btnVerLugaresVisitantes"><b style="font-size:20px; color:black">Ver Lugares
+            Visitantes <span class="fas fa-car-side"></span></b></button><br /><br />
+</div>
+
+<div class="container divScroll collapse visitantes-page" id="divTablaVisitantes">
+    <table class="table" style="border: 2px solid #34495E; text-align:center; width:100%" id="tableVisitantesEstacionamiento">
+        <thead>
+            <tr>
+                <th><b>Dirección</b></th>
+                <th><b>Lugar</b></th>
+                <th><b>Usuario</b></th>
+                <th><b>Usuario Responsable</b></th>
+                <th><b>Hora Entrada</b></th>
+                <th><b>Hora Salida</b></th>
+                <th><b>Placas</b></th>
+                <th><b>Modelo</b></th>
+                <th><b>Color</b></th>
+                <th><b>Fecha Visita</b></th>
+                <th><b>Observaciones</b></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyVisitantesEstacionamiento">
+            @*@foreach (MEstacionamiento estaciona in Model)
+                {
+                    <tr>
+                        <td>@estaciona.Lugares.sLugar</td>
+                        <td>@estaciona.LugarDireccion.sLugar</td>
+                        <td>@estaciona.Usuarios.sNombre</td>
+                        <td>@estaciona.Usuarios.idUserResponsables</td>
+            filas += '<tr><td><p>' + estaciona.Lugares.sLugar + '</p></td><td><p>' + estaciona.LugarDireccion.sLugar + '</p></td><td><p>' + estaciona.Usuarios.sNombre + '</p></td><td><p>' + estaciona.Usuarios.idUserResponsables + '</p></td><td><p>' + estaciona.horaVisita + '</p></td><td><p>' + estaciona.horaSalida + '</p></td><td><p>' + estaciona.sPlaca + '</p></td><td><p>' + estaciona.sModelo + '</p></td><td><p>' + estaciona.sColor + '</p></td><td><p>' + estaciona.dtFechaVisitaJSON + '</p></td><td><p>' + estaciona.sObservaciones + '</p></td><td><button class="btn btn-success" style="border: 3px solid #B03A2E ; background-color:white" id="btnLiberar" onclick="ObtenerCajon(' + estaciona.uiRegistroCajones + ')"><b style...
+                        <td>@estaciona.horaVisita</td>
+                        <td>@estaciona.horaSalida</td>
+                        <td>@estaciona.sPlaca</td>
+                        <td>@estaciona.sModelo</td>
+                        <td>@estaciona.sColor</td>
+                        <td>@estaciona.dtFechaAsignacion.ToShortDateString()</td>
+                        <td>@estaciona.sObservaciones</td>
+                        <td><button class="btn btn-success" style="border: 3px solid #B03A2E ; background-color:white" id="btnLiberar" onclick="ObtenerCajon(@estaciona.uiRegistroCajones)"><b style="color:black">Liberar Cajón <span class="fas fa-lock-open"></span></b></button></td>
+                    </tr>
+                }*@              
+        </tbody>
+    </table>
+</div>
+<script src="~/scripts/jquery-1.10.2.js"></script>
+<script src="~/alertifyjs/alertify.js"></script>
+<script>
+    function MostrarEstacionamientosVisitas(lista) {
+        debugger;
+        var filas = "";
+
+        $.each(lista, function (i, estaciona) {
+            debugger;
+
+            filas += '<tr><td><p>' + estaciona.Lugares.sLugar + '</p></td><td><p>' + estaciona.LugarDireccion.sLugar + '</p></td><td><p>' + estaciona.Usuarios.sNombre + '</p></td><td><p>' + estaciona.Usuarios.nombreResponsable + '</p></td><td><p>' + estaciona.horaVisita + '</p></td><td><p>' + estaciona.horaSalida + '</p></td><td><p>' + estaciona.sPlaca + '</p></td><td><p>' + estaciona.sModelo + '</p></td><td><p>' + estaciona.sColor + '</p></td><td><p>' + estaciona.dtFechaVisitaJSON + '</p></td><td><p>' + estaciona.sObservaciones + '</p></td><td><button class="btn btn-success" style="border: 3px solid #B03A2E ; background-color:white" id="btnLiberar" onclick="ObtenerCajon(' + estaciona.uiRegistroCajones + ')"><b style="color:black">Liberar Cajón <span class="fas fa-lock-open"></span></b></button></td></tr>';
+
+        });
+
+        $("#tbodyVisitantesEstacionamiento").empty();
+        $("#tbodyVisitantesEstacionamiento").html(filas);
+        debugger;
+    };
+
+    function LugaresAsignadosVisitantes() {
+        $.ajax({
+
+            url: "/Estacionamiento/MostrarAsignacionesEstacionamientosVisitantes_AJAX",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "JSON",
+            cache: false,
+
+            success: function (r) {
+                if (r.error == true) {
+                    var alert = alertify.alert("Error", r.mensaje).set('label', 'Aceptar');
+                    alert.set({ transition: 'zoom' }); //slide, zoom, flipx, flipy, fade, pulse (default)
+                    alert.set('modal', false);  //al pulsar fuera del dialog se cierra o no
+                }
+                else {
+
+                    MostrarEstacionamientosVisitas(r.listaEstacionamientos);
+                    $("#divTabla").hide();
+                    $("#divTablaVisitantes").show();
+                    $("#btnSeleccionInfo").show();
+
+                    $("#btnVerInformacionUsuarios").show();
+                    $("#btnVerInformacionVisitantes").hide();
+                }
+            },
+
+            error: function (error) {
+                alert(error.responseText);
+            }
+        });
+    };
+
+    $(document).ready(function () {
+
+        $("#btnVerLugaresVisitantes").click(function () {
+
+            LugaresAsignadosVisitantes();
+        });
+    });
+
+    function ObtenerCajon(ID) {
+
+
+        var confirm = alertify.confirm('Liberar Cajón', '¿Estás seguro de liberar el Cajón de Estacionamiento', null, null).set('labels', { ok: 'Confirmar', cancel: 'Cancelar' });
+
+        confirm.set({ transition: 'slide' });
+
+        confirm.set('onok', function () {
+
+            $.ajax({
+
+                url: "/Estacionamiento/LiberarCajon_AJAX?registroCajon=" + ID,
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "JSON",
+                cache: false,
+
+                success: function (r) {
+                    if (r.error == true) {
+                        alert(r.mesaje);
+                    }
+                    else {
+                        LugaresAsignadosVisitantes();
+                        alertify.success("Se liberó el cajón de estacionamiento exitosamente");
+                    }
+                },
+
+                error: function (error) {
+                    alert(error.responseText);
+                }
+            });
+        });
+
+        confirm.set('oncancel', function () {
+            debugger;
+        });
+    };
+
+    //session end
+    var sessionTimeoutWarning = @Session.Timeout -1;
+    debugger;
+
+    var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+    setTimeout('SessionEnd()', sTimeout);
+
+    function SessionEnd() {
+        //window.location = "/pep/PEPLogin/LoginOut";
+        window.location = "/Estacionamiento/CajonesVisitantes";
+    }
+</script>

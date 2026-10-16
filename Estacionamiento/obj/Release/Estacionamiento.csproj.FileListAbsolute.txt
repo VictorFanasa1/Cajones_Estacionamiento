@@ -1,0 +1,92 @@
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\ApplicationInsights.config
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\csc.exe
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\vbc.exe
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\VBCSCompiler.exe
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Estacionamiento.dll.config
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Estacionamiento.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Estacionamiento.pdb
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.Web.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.ApplicationInsights.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Helpers.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Mvc.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Razor.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.Deployment.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.Razor.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.Web.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.ApplicationInsights.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Razor.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.Deployment.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.Razor.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Helpers.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\bin\System.Web.Mvc.xml
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\obj\Release\Estacionamiento.dll
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\obj\Release\Estacionamiento.pdb
+C:\Users\diana.montano\Documents\Proyectos Samy\Fase 1 Estacionamiento\Estacionamiento Ajustes\Estacionamiento\Estacionamiento\obj\Release\Estacionamiento.csprojResolveAssemblyReference.cache
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\ApplicationInsights.config
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\csc.exe
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\vbc.exe
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\VBCSCompiler.exe
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Estacionamiento.dll.config
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Estacionamiento.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Estacionamiento.pdb
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.Web.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.ApplicationInsights.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Helpers.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Mvc.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Razor.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.Deployment.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.Razor.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.Web.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.ApplicationInsights.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Razor.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.Deployment.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Webpages.Razor.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Helpers.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\bin\System.Web.Mvc.xml
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\obj\Release\Estacionamiento.csprojResolveAssemblyReference.cache
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\obj\Release\Estacionamiento.dll
+C:\Users\diana.montano\Documents\Proyectos Gabriel\Estacionamiento\Estacionamiento_Ajustes-test-changes\Estacionamiento\Estacionamiento\obj\Release\Estacionamiento.pdb

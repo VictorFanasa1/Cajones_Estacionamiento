@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:hd="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" xmlns:alta="http://servicios.grupofarmacos.com/FAR/Schema/Elementos/FAREmpleados" xmlns:types="http://servicios.grupofarmacos.com/FAR/Schema/Tipos/HR/EmpleadosSvc/v1" xmlns:util="http://types.grupofarmacos.com/Utilerias" xmlns:ms="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" elementFormDefault="qualified" targetNamespace="http://servicios.grupofarmacos.com/FAR/Schema/Elementos/HR/EmpleadosSvc/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFARStandardHeader" namespace="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" />
+  <xsd:import schemaLocation="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFARStandardMessage" namespace="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" />
+  <xsd:import schemaLocation="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FHR%2FEmpleados%2FResources%2FSchemas%2FEmpleadosPXY_Tipos" namespace="http://servicios.grupofarmacos.com/FAR/Schema/Tipos/HR/EmpleadosSvc/v1" />
+  <xsd:element name="altaProveedorRequest" type="types:AltaProveedorRequestType" />
+  <xsd:element name="altaProveedorResponse" type="types:AltaProveedorResponseType" />
+  <xsd:element name="enviarNovedadesRequest" type="types:EnviarNovedadesRequestType" />
+  <xsd:element name="enviarNovedadesResponse" type="types:EnviarNovedadesResponseType" />
+  <xsd:element name="enviarEmpleadosNominaRequest" type="types:EnviarEmpleadosType" />
+  <xsd:element name="enviarEmpleadosNominaResponse" type="ms:MessageResponse" />
+  <xsd:element name="enviarEmpleadosCaeRequest" type="types:EnviarEmpleadosType" />
+  <xsd:element name="enviarEmpleadosCaeResponse" type="ms:MessageResponse" />
+  <xsd:element name="enviarEmpleadosSumTRequest" type="types:EnviarEmpleadosType" />
+  <xsd:element name="enviarEmpleadosSumTResponse" type="ms:MessageResponse" />
+  <xsd:element name="obtenerFastRequest" type="types:ObtenerFastInputType" />
+  <xsd:element name="obtenerFastResponse" type="types:ObtenerFastOutputType" />
+  <xsd:element name="obtenerIdEmpleadoRequest" type="types:obtenerIdEmpleadoRequestType" />
+  <xsd:element name="obtenerIdEmpleadoResponse" type="types:obtenerIdEmpleadoResponseType" />
+  <xsd:element name="enviarEmpleadoRequest" type="types:EnviarEmpleadoNovedadesType" />
+</xsd:schema>

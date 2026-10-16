@@ -1,0 +1,130 @@
+@* Formularios/Secciones colapsables de búsqueda y captura *@
+<div class="container collapse" id="btnSeleccionInfo">
+  <div class="row">
+    <div class="col-md-4 col-xs-6">
+      <button class="btn btn-success" style="border: 3px solid orange; background-color:white" id="btnVerInformacionVisitantes"><b style="font-size:18px; color:black">Visitantes <span class="fas fa-user-tie"></span></b></button>
+      <button class="btn btn-success collapse" style="border: 3px solid orange; background-color:white" id="btnVerInformacionUsuarios"><b style="font-size:20px; color:black">Usuarios <span class="fas fa-user"></span></b></button>
+    </div>
+    <div class="col-md-4 col-xs-6">
+      <a class="btn btn-success" style="border: 3px solid navy; background-color:white" id="btnVerReportes" href="@Url.Action("ReportesEstacionamientos", "Estacionamiento")"><b style="font-size:18px; color:black">Reportes <span class="fas fa-paste"></span></b></a>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-success" style="border: 3px solid orange; background-color:white" id="btnEmpleados"><b style="font-size:20px; color:black">Empleados <span class="fas fa-users"></span></b></button>
+    </div>
+  </div>
+  <br />
+</div>
+
+<div class="collapse" style="text-align:center" id="catalogoLugares">
+  <div class="row">
+    <div class="col-md-3">
+      <h4 style="font-size:20px; font-weight:bold; color:gray">Seleccione Dirección de Estacionamiento:</h4>
+    </div>
+    <div class="col-md-3">
+      <input type="text" id="listCatalogoSeleccion" name="ListaDeCatalogo" list="listCatalogo" class="form-control" placeholder="Seleccione Dirección" />
+      <datalist id="listCatalogo"></datalist>
+    </div>
+    <div class="collapse" id="divLugares">
+      <div class="col-md-3">
+        <h4 style="font-size:20px; font-weight:bold; color:gray">Ingrese Lugar:</h4>
+      </div>
+      <div class="col-md-2">
+        <input type="text" id="lugar" name="ListaDeLugares" list="listCatalogoLugares" class="form-control" placeholder="Seleccione Lugar" />
+        <datalist id="listCatalogoLugares"></datalist>
+      </div>
+    </div>
+  </div>
+  <hr />
+</div>
+
+<div class="collapse" style="text-align:center" id="divUsuarios">
+  <div class="row">
+    <div class="col-md-4">
+      <h4 style="font-size:20px; font-weight:bold; color:gray">Ingrese usuario o número de empleado:</h4>
+    </div>
+    <div class="col-md-4 col-xs-6">
+      <input class="form-control" id="txtParametroUser" />
+    </div>
+    <div class="col-md-4 col-xs-6">
+      <button class="btn btn-success" id="btnBuscarUser" style="border: 4px solid #E67E22; background-color:white"><b style="font-size:20px; color:black">Buscar <span class="fas fa-search"></span></b></button>
+    </div>
+  </div>
+  <hr />
+</div>
+
+<div class="collapse" id="gifCargando" style="text-align:center">
+  <img src="~/Gif/gif_brincando.gif" style="width:400px; height:300px" />
+</div>
+
+<div class="collapse" style="text-align:center" id="divUserAD">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-1 col-xs-1">
+        <span class="fas fa-user-circle fa-2x" style="color:#1F618D"></span>
+      </div>
+      <div class="col-md-10 col-xs-10">
+        <input class="form-control" id="numEmpleado" />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-1 col-xs-1">
+        <span class="fas fa-user fa-2x" style="color:#1F618D "></span>
+      </div>
+      <div class="col-md-10 col-xs-10">
+        @Html.TextArea("nombreUsuario", null, new { @class = "form-control", @id = "nombreUser" })
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-1 col-xs-1">
+        <span class="fas fa-envelope fa-2x" style="color:#1F618D"></span>
+      </div>
+      <div class="col-md-10 col-xs-10">
+        <input class="form-control" id="correoUser" />
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-1 col-xs-1">
+        <span class="fas fa-id-badge fa-2x" style="color:#1F618D"></span>
+      </div>
+      <div class="col-md-10 col-xs-10">
+        <input class="form-control" id="puestoUser" placeholder="Puesto" />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-1 col-xs-1">
+        <span class="fas fa-user-tie fa-2x" style="color:#1F618D "></span>
+      </div>
+      <div class="col-md-10 col-xs-10">
+        <input class="form-control" id="jefeUser" placeholder="Jefe Directo" />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-1 col-xs-1">
+        <span class="fas fa-sitemap fa-2x" style="color:#1F618D"></span>
+      </div>
+      <div class="col-md-10 col-xs-10">
+        <input class="form-control" id="uenUser" placeholder="UEN" />
+      </div>
+    </div>
+  </div>
+  <br /><br />
+</div>
+
+<div class="collapse" style="text-align:center" id="btnGuardarLugarEmpleado">
+  <div class="row">
+    <div class="col-md-8 col-xs-12">
+      <div class="col-md-6">
+        <h4 style="font-size:20px; font-weight:bold; color:gray"><span class="fas fa-eye fa-1x" style="color:#1F618D "></span> Observaciones:</h4>
+      </div>
+      <div class="col-md-6">
+        @Html.TextArea("observacionesEstacionamiento", null, new { @class = "form-control", @id = "observacionesEsta" })
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <button class="btn btn-success" id="btnAsignarLugarEmpelado"><b style="font-size:18px; color:black">Asignar Lugar Empleado <span class="fas fa-user-plus"></span></b></button>
+    </div>
+  </div>
+</div>

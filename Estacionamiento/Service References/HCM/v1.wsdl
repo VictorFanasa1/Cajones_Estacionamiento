@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N3="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N1="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" xmlns:WL5G3N2="http://servicios.grupofarmacos.com/FAR/Schema/Elementos/HR/EmpleadosSvc/v1" xmlns:WL5G3N4="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" targetNamespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:inp3="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" xmlns:inp2="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:inp1="http://servicios.grupofarmacos.com/FAR/Schema/Elementos/HR/EmpleadosSvc/v1" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FHR%2FEmpleados%2FResources%2FSchemas%2FEmpleadosPXY_Elementos" namespace="http://servicios.grupofarmacos.com/FAR/Schema/Elementos/HR/EmpleadosSvc/v1" />
+    </xsd:schema>
+    <xsd:schema xmlns:inp3="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" xmlns:inp2="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:inp1="http://servicios.grupofarmacos.com/FAR/Schema/Elementos/HR/EmpleadosSvc/v1" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFARStandardMessage" namespace="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" />
+    </xsd:schema>
+    <xsd:schema xmlns:inp3="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" xmlns:inp2="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardMessage" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:inp1="http://servicios.grupofarmacos.com/FAR/Schema/Elementos/HR/EmpleadosSvc/v1" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFARStandardHeader" namespace="http://servicios.grupofarmacos.com/FAR/Schema/FARStandardHeader" />
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="headerRequestMessage">
+    <WL5G3N0:part name="headerRequest" element="WL5G3N1:headerMessage" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="headerResponseMessage">
+    <WL5G3N0:part name="headerResponse" element="WL5G3N1:headerMessageResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="altaProveedorRequestMessage">
+    <WL5G3N0:part name="request" element="WL5G3N2:altaProveedorRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="altaProveedorResponseMessage">
+    <WL5G3N0:part name="response" element="WL5G3N2:altaProveedorResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarNovedadesRequestMessage">
+    <WL5G3N0:part name="request" element="WL5G3N2:enviarNovedadesRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarNovedadesResponseMessage">
+    <WL5G3N0:part name="response" element="WL5G3N2:enviarNovedadesResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="empleadosFaultMessage">
+    <WL5G3N0:part name="empleadosFault" element="WL5G3N3:messageError" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarEmpleadosNominaRequestMessage">
+    <WL5G3N0:part name="request" element="WL5G3N2:enviarEmpleadosNominaRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarEmpleadosNominaResponseMessage">
+    <WL5G3N0:part name="response" element="WL5G3N2:enviarEmpleadosNominaResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarEmpleadosNominaFaultMessage">
+    <WL5G3N0:part name="empleadosFault" element="WL5G3N3:messageError" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarEmpleadosCaeRequestMessage">
+    <WL5G3N0:part name="request" element="WL5G3N2:enviarEmpleadosCaeRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarEmpleadosCaeResponseMessage">
+    <WL5G3N0:part name="response" element="WL5G3N2:enviarEmpleadosCaeResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarEmpleadosCaeFaultMessage">
+    <WL5G3N0:part name="empleadosFault" element="WL5G3N3:messageError" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarEmpleadosSumTRequestMessage">
+    <WL5G3N0:part name="request" element="WL5G3N2:enviarEmpleadosSumTRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarEmpleadosSumTResponseMessage">
+    <WL5G3N0:part name="response" element="WL5G3N2:enviarEmpleadosSumTResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="enviarEmpleadosSumTFaultMessage">
+    <WL5G3N0:part name="empleadosFault" element="WL5G3N3:messageError" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerFastRequestMessage">
+    <WL5G3N0:part name="request" element="WL5G3N2:obtenerFastRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerFastResponseMessage">
+    <WL5G3N0:part name="response" element="WL5G3N2:obtenerFastResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerFastFaultMessage">
+    <WL5G3N0:part name="empleadosFault" element="WL5G3N3:messageError" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerIdEmpleadoRequestMessage">
+    <WL5G3N0:part name="request" element="WL5G3N2:obtenerIdEmpleadoRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerIdEmpleadoResponseMessage">
+    <WL5G3N0:part name="response" element="WL5G3N2:obtenerIdEmpleadoResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerIdEmpleadoFaultMessage">
+    <WL5G3N0:part name="empleadosFault" element="WL5G3N3:messageError" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="EmpleadosPortType">
+    <WL5G3N0:operation name="altaProveedor">
+      <WL5G3N0:input message="WL5G3N4:altaProveedorRequestMessage" />
+      <WL5G3N0:output message="WL5G3N4:altaProveedorResponseMessage" />
+      <WL5G3N0:fault name="empleadosFault" message="WL5G3N4:empleadosFaultMessage" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="enviarNovedades">
+      <WL5G3N0:input message="WL5G3N4:enviarNovedadesRequestMessage" />
+      <WL5G3N0:output message="WL5G3N4:enviarNovedadesResponseMessage" />
+      <WL5G3N0:fault name="empleadosFault" message="WL5G3N4:empleadosFaultMessage" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="enviarEmpleadosNomina">
+      <WL5G3N0:input message="WL5G3N4:enviarEmpleadosNominaRequestMessage" />
+      <WL5G3N0:output message="WL5G3N4:enviarEmpleadosNominaResponseMessage" />
+      <WL5G3N0:fault name="enviarEmpleadosNominaFault" message="WL5G3N4:enviarEmpleadosNominaFaultMessage" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="enviarEmpleadosCae">
+      <WL5G3N0:input message="WL5G3N4:enviarEmpleadosCaeRequestMessage" />
+      <WL5G3N0:output message="WL5G3N4:enviarEmpleadosCaeResponseMessage" />
+      <WL5G3N0:fault name="enviarEmpleadosCaeFault" message="WL5G3N4:enviarEmpleadosCaeFaultMessage" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="enviarEmpleadosSumT">
+      <WL5G3N0:input message="WL5G3N4:enviarEmpleadosSumTRequestMessage" />
+      <WL5G3N0:output message="WL5G3N4:enviarEmpleadosSumTResponseMessage" />
+      <WL5G3N0:fault name="enviarEmpleadosSumTFault" message="WL5G3N4:enviarEmpleadosSumTFaultMessage" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerFast">
+      <WL5G3N0:input message="WL5G3N4:obtenerFastRequestMessage" />
+      <WL5G3N0:output message="WL5G3N4:obtenerFastResponseMessage" />
+      <WL5G3N0:fault name="obtenerFastFault" message="WL5G3N4:obtenerFastFaultMessage" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerIdEmpleado">
+      <WL5G3N0:input message="WL5G3N4:obtenerIdEmpleadoRequestMessage" />
+      <WL5G3N0:output message="WL5G3N4:obtenerIdEmpleadoResponseMessage" />
+      <WL5G3N0:fault name="obtenerIdEmpleadoFault" message="WL5G3N4:obtenerIdEmpleadoFaultMessage" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="EmpleadosBinding" type="WL5G3N4:EmpleadosPortType">
+    <WL5G3N5:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="altaProveedor">
+      <WL5G3N5:operation soapAction="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados/altaProveedor" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerRequestMessage" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerResponseMessage" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="empleadosFault">
+        <WL5G3N5:fault use="literal" name="empleadosFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="enviarNovedades">
+      <WL5G3N5:operation soapAction="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados/enviarNovedades" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerRequestMessage" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerResponseMessage" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="empleadosFault">
+        <WL5G3N5:fault use="literal" name="empleadosFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="enviarEmpleadosNomina">
+      <WL5G3N5:operation soapAction="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados/enviarEmpleadosNomina" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerRequestMessage" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerResponseMessage" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="enviarEmpleadosNominaFault">
+        <WL5G3N5:fault use="literal" name="enviarEmpleadosNominaFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="enviarEmpleadosCae">
+      <WL5G3N5:operation soapAction="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados/enviarEmpleadosCae" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerRequestMessage" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerResponseMessage" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="enviarEmpleadosCaeFault">
+        <WL5G3N5:fault use="literal" name="enviarEmpleadosCaeFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="enviarEmpleadosSumT">
+      <WL5G3N5:operation soapAction="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados/enviarSEmpleadosSumT" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerRequestMessage" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerResponseMessage" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="enviarEmpleadosSumTFault">
+        <WL5G3N5:fault use="literal" name="enviarEmpleadosSumTFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerFast">
+      <WL5G3N5:operation soapAction="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados/enviarSEmpleadosSumT" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerRequestMessage" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerResponseMessage" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="obtenerFastFault">
+        <WL5G3N5:fault use="literal" name="obtenerFastFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerIdEmpleado">
+      <WL5G3N5:operation soapAction="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados/enviarSEmpleadosSumT" style="document" />
+      <WL5G3N0:input>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerRequestMessage" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N5:body use="literal" namespace="http://servicios.grupofarmacos.com/FAR/Services/FAREmpleados" />
+        <WL5G3N5:header message="WL5G3N4:headerResponseMessage" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="obtenerIdEmpleadoFault">
+        <WL5G3N5:fault use="literal" name="obtenerIdEmpleadoFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="EmpleadosBindingQSService">
+    <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+    <WL5G3N0:port name="EmpleadosBindingQSPort" binding="WL5G3N4:EmpleadosBinding">
+      <WL5G3N5:address location="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com:443/Farmacos/HR/EmpleadosSvc/v1" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

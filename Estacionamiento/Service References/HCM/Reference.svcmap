@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f6ec6a2e-3d30-46f5-8a5c-97188c791cd5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com/Farmacos/HR/EmpleadosSvc/v1?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="v1.wsdl" MetadataType="Wsdl" ID="7294e0bb-8d76-4ee7-a32a-f7741fece328" SourceId="1" SourceUrl="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com/Farmacos/HR/EmpleadosSvc/v1?wsdl" />
+    <MetadataFile FileName="v1.xsd" MetadataType="Schema" ID="1b0cc644-004d-4f0f-b230-73525be0a5ff" SourceId="1" SourceUrl="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FHR%2FEmpleados%2FResources%2FSchemas%2FEmpleadosPXY_Tipos" />
+    <MetadataFile FileName="v11.xsd" MetadataType="Schema" ID="d900a057-b9f9-44e0-ba65-2b1598e008d1" SourceId="1" SourceUrl="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFARDatosEmpleadoXSD" />
+    <MetadataFile FileName="v12.xsd" MetadataType="Schema" ID="c2181248-7d8f-46b2-b6f4-8f279ddf4229" SourceId="1" SourceUrl="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FHR%2FEmpleados%2FResources%2FSchemas%2FEmpleadosPXY_Elementos" />
+    <MetadataFile FileName="v13.xsd" MetadataType="Schema" ID="32cd3e60-11ab-4e9f-a56e-cc797f0ed10b" SourceId="1" SourceUrl="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFARStandardMessage" />
+    <MetadataFile FileName="v14.xsd" MetadataType="Schema" ID="fdd60cd7-8253-4536-8278-fc9d08c52ef7" SourceId="1" SourceUrl="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFAREmpleadosXSD" />
+    <MetadataFile FileName="v15.xsd" MetadataType="Schema" ID="55c11752-77b9-4b2e-9ee2-e97ac39ac704" SourceId="1" SourceUrl="https://psoagobiernogrfe-oci.opc.oracleoutsourcing.com/Farmacos/HR/EmpleadosSvc/v1?SCHEMA%2FCommon%2FXSD%2FFARStandardHeader" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
