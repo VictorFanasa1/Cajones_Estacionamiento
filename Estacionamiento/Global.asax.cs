@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Estacionamiento.Filters;
+using Fanasa.SSO.AspNet;
+using Fanasa.SSO.Core;
 
 namespace Estacionamiento
 {
@@ -16,6 +19,15 @@ namespace Estacionamiento
             // Registrar filtro global de auditoría
             GlobalFilters.Filters.Add(new AuditLogAttribute());
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // Configurar SSO Fanasa (Microsoft Entra ID)
+            FanasaSSOConfig.Initialize(new SsoOptions
+            {
+                SsoUrl = ConfigurationManager.AppSettings["FanasaSSO:SsoUrl"],
+                ClientId = ConfigurationManager.AppSettings["FanasaSSO:ClientId"],
+                TenantId = ConfigurationManager.AppSettings["FanasaSSO:TenantId"],
+                ClientName = ConfigurationManager.AppSettings["FanasaSSO:ClientName"]
+            });
         }
 
         protected void Application_AcquireRequestState(object sender, EventArgs e)

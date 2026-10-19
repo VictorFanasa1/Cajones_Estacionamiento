@@ -7,6 +7,8 @@ using Estacionamiento.Models.ViewModels;
 using System.DirectoryServices;
 using Estacionamiento.Models;
 using System.Data;
+using Fanasa.SSO.AspNet;
+using Fanasa.SSO.Core;
 
 namespace Estacionamiento.Controllers
 {
@@ -175,6 +177,93 @@ namespace Estacionamiento.Controllers
             {
                 ModelState.AddModelError("", "Error al iniciar sesión: " + ex.Message);
                 return View(model);
+            }
+        }
+
+        // Login con SSO Fanasa (Microsoft Entra ID). Convive con el login tradicional.
+        // El navegador obtiene el id_token en el popup del SSO y lo envía aquí;
+        // el servidor valida firma, emisor, audiencia y vigencia antes de confiar en él.
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult LoginSso(string idToken)
+        {
+            if (!string.Equals(ConfigurationManager.AppSettings["FanasaSSO:Enabled"], "true", StringComparison.OrdinalIgnoreCase))
+                return Json(new { ok = false, message = "El acceso con Microsoft no está habilitado." });
+
+            SsoUser ssoUser;
+            string error;
+            if (!SsoTokenValidator.TryValidate(idToken, FanasaSSOConfig.Current, out ssoUser, out error))
+                return Json(new { ok = false, message = "No se pudo validar la sesión de Microsoft: " + error });
+
+            if (string.IsNullOrWhiteSpace(ssoUser.Email))
+                return Json(new { ok = false, message = "La cuenta de Microsoft no tiene correo asociado." });
+
+            try
+            {
+                MUsuarios info = BuscarUsuarioADPorCorreo(ssoUser.Email);
+                if (info == null || info.uiNumeroEmpleado == 0)
+                    return Json(new { ok = false, message = "No se encontró tu número de empleado en el directorio. Usa el acceso con usuario y contraseña." });
+
+                Session["log"] = info;
+                MUsuarios user = EnsureUsuarioLocal(info.uiNumeroEmpleado);
+                string displayName = !string.IsNullOrWhiteSpace(user.sNombre) ? user.sNombre : info.sNombre;
+
+                FormsAuthentication.SetAuthCookie(displayName, false);
+                Session["IdUsuario"] = user.IdUsuarios;
+                Session["Nombre"] = displayName;
+                Session["Rol"] = user.iRol;
+
+                return Json(new { ok = true, redirect = GetDefaultUrlForRole(user.iRol) });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { ok = false, message = "Error al iniciar sesión: " + ex.Message });
+            }
+        }
+
+        // Busca en AD al usuario autenticado por SSO usando su correo/UPN.
+        // Devuelve null si no hay exactamente una coincidencia.
+        private MUsuarios BuscarUsuarioADPorCorreo(string correo)
+        {
+            var ldapPath = ConfigurationManager.AppSettings["LdapPath"];
+            var serviceUser = ConfigurationManager.AppSettings["LdapServiceUser"];
+            var servicePassword = ConfigurationManager.AppSettings["LdapServicePassword"];
+            if (string.IsNullOrWhiteSpace(serviceUser)) { serviceUser = null; servicePassword = null; }
+            string escaped = EscapeLdapFilter(correo);
+
+            using (var root = new DirectoryEntry(ldapPath, serviceUser, servicePassword, AuthenticationTypes.Secure))
+            using (var searcher = new DirectorySearcher(root))
+            {
+                searcher.Filter = string.Format(
+                    "(&(objectCategory=person)(objectClass=user)(|(userPrincipalName={0})(mail={0})(proxyAddresses=smtp:{0})))", escaped);
+                searcher.PropertiesToLoad.Add("employeeNumber");
+                searcher.PropertiesToLoad.Add("cn");
+                searcher.PropertiesToLoad.Add("mail");
+                searcher.PropertiesToLoad.Add("title");
+                searcher.PropertiesToLoad.Add("Company");
+                searcher.SizeLimit = 2;
+
+                using (var results = searcher.FindAll())
+                {
+                    if (results.Count != 1) return null;
+                    SearchResult r = results[0];
+
+                    Func<string, string> prop = key =>
+                        r.Properties.Contains(key) && r.Properties[key].Count > 0 ? Convert.ToString(r.Properties[key][0]) : null;
+
+                    int numEmpleado;
+                    if (!int.TryParse(prop("employeeNumber"), out numEmpleado)) return null;
+
+                    return new MUsuarios
+                    {
+                        uiNumeroEmpleado = numEmpleado,
+                        sNombre = prop("cn"),
+                        sCorreo = prop("mail") ?? correo,
+                        Puesto = prop("title"),
+                        UEN = prop("Company")
+                    };
+                }
             }
         }
 
