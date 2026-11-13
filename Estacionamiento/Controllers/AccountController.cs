@@ -445,6 +445,19 @@ namespace Estacionamiento.Controllers
             sessionCookie.Expires = DateTime.Now.AddYears(-1);
             Response.Cookies.Add(sessionCookie);
 
+            // Con SSO: regresar a la pantalla de login del portal SSO, que espera a que el usuario
+            // inicie sesión otra vez y luego regresa a Account/Login con el token.
+            var sso = FanasaSSOConfig.Current;
+            if (string.Equals(ConfigurationManager.AppSettings["FanasaSSO:Enabled"], "true", StringComparison.OrdinalIgnoreCase)
+                && sso != null && !string.IsNullOrWhiteSpace(sso.SsoUrl))
+            {
+                var regreso = Url.Action("Login", "Account", null, Request.Url.Scheme);
+                var url = sso.SsoUrl.TrimEnd('/') + "/login?redirect_uri=" + Uri.EscapeDataString(regreso);
+                if (!string.IsNullOrWhiteSpace(sso.ClientName))
+                    url += "&client_name=" + Uri.EscapeDataString(sso.ClientName);
+                return Redirect(url);
+            }
+
             return RedirectToAction("Login");
         }
 

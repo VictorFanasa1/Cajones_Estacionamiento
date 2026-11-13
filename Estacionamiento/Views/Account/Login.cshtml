@@ -3,6 +3,12 @@
     ViewBag.Title = "Iniciar sesión";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var ssoEnabled = string.Equals(System.Configuration.ConfigurationManager.AppSettings["FanasaSSO:Enabled"], "true", StringComparison.OrdinalIgnoreCase);
+    // ?local=1 muestra el login tradicional (oculto, solo para pruebas)
+    var modoLocal = Request.QueryString["local"] == "1";
+    // Solo se redirige al SSO en GET; si el formulario tradicional regresó con error, se muestra el error
+    var ssoAuto = ssoEnabled && !modoLocal && Request.HttpMethod == "GET";
+    // El formulario tradicional solo se ve sin SSO, con ?local=1 o al regresar de un POST con error
+    var mostrarFormulario = !ssoEnabled || modoLocal || Request.HttpMethod == "POST";
 }
 
 <div class="row login-page" style="margin-top:30px;">
@@ -12,7 +18,19 @@
                 <h3 class="panel-title text-center">@ViewBag.Title</h3>
             </div>
             <div class="panel-body">
-              
+
+                @if (ssoAuto)
+                {
+                    <div id="sso-cargando" class="text-center" style="padding:15px 0;">
+                        <p><i class="fa fa-spinner fa-spin"></i> Iniciando sesión con tu cuenta de Microsoft...</p>
+                    </div>
+                }
+                <div id="sso-error" style="display:none;">
+                    <div class="alert alert-danger" id="sso-error-msg"></div>
+                    <a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-block">Intentar de nuevo</a>
+                </div>
+
+                <div id="login-local" style="@(mostrarFormulario ? "" : "display:none;")">
                 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
@@ -47,12 +65,11 @@
 
                 @if (ssoEnabled)
                 {
-                    <div class="text-center text-muted" style="margin:15px 0;">— o —</div>
-                    <div id="sso-error" class="alert alert-danger" style="display:none;"></div>
-                    <button type="button" id="btn-sso" class="btn btn-default btn-block">
-                        <i class="fa fa-windows"></i> Iniciar sesión con Microsoft
-                    </button>
+                    <p class="text-center" style="margin-top:15px;">
+                        <a href="@Url.Action("Login", "Account")"><i class="fa fa-windows"></i> Entrar con tu cuenta de Microsoft</a>
+                    </p>
                 }
+                </div>
             </div>
         </div>
     </div>
@@ -64,39 +81,39 @@
         <script src="@Url.Content("~/fanasa-sso/script")"></script>
         <script>
             (function () {
-                var $btn = $('#btn-sso');
-                var $err = $('#sso-error');
-                var textoOriginal = $btn.html();
+                var ssoAuto = @(ssoAuto ? "true" : "false");
+
+                var sso = new FanasaSSO({
+                    ssoUrl: '@System.Configuration.ConfigurationManager.AppSettings["FanasaSSO:SsoUrl"]',
+                    redirectUri: window.location.origin + '@Url.Action("Login", "Account")',
+                    clientName: '@System.Configuration.ConfigurationManager.AppSettings["FanasaSSO:ClientName"]'
+                });
 
                 function mostrarError(msg) {
-                    $err.text(msg).show();
-                    $btn.prop('disabled', false).html(textoOriginal);
+                    $('#sso-cargando').hide();
+                    $('#sso-error-msg').text(msg);
+                    $('#sso-error').show();
                 }
 
-                $btn.on('click', function () {
-                    $err.hide();
-                    $btn.prop('disabled', true).text('Conectando con Microsoft...');
-
-                    var sso = new FanasaSSO({
-                        ssoUrl: '@System.Configuration.ConfigurationManager.AppSettings["FanasaSSO:SsoUrl"]',
-                        redirectUri: window.location.origin + '@Url.Content("~/")',
-                        clientName: '@System.Configuration.ConfigurationManager.AppSettings["FanasaSSO:ClientName"]'
+                // Regreso del SSO: el token viene en el hash (#id_token=...), nunca llega al servidor en la URL
+                var token = sso.handleRedirectCallback();
+                if (token) {
+                    $.post('@Url.Action("LoginSso", "Account")', {
+                        idToken: token.idToken,
+                        __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                    }).done(function (r) {
+                        if (r && r.ok) { window.location = r.redirect; }
+                        else { mostrarError((r && r.message) || 'No se pudo iniciar sesión.'); }
+                    }).fail(function () {
+                        mostrarError('Error de comunicación con el servidor.');
                     });
+                    return;
+                }
 
-                    sso.loginPopup().then(function (token) {
-                        $.post('@Url.Action("LoginSso", "Account")', {
-                            idToken: token.idToken,
-                            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
-                        }).done(function (r) {
-                            if (r && r.ok) { window.location = r.redirect; }
-                            else { mostrarError((r && r.message) || 'No se pudo iniciar sesión.'); }
-                        }).fail(function () {
-                            mostrarError('Error de comunicación con el servidor.');
-                        });
-                    }, function (e) {
-                        mostrarError(e && e.message ? e.message : 'No se pudo iniciar sesión con Microsoft.');
-                    });
-                });
+                // Sin token: ir al SSO. Si ya hay sesión de Microsoft, regresa de inmediato sin pedir nada
+                if (ssoAuto) {
+                    sso.loginRedirect();
+                }
             })();
         </script>
     }
