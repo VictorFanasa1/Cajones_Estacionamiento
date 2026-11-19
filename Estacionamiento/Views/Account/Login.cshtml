@@ -3,11 +3,8 @@
     ViewBag.Title = "Iniciar sesión";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var ssoEnabled = string.Equals(System.Configuration.ConfigurationManager.AppSettings["FanasaSSO:Enabled"], "true", StringComparison.OrdinalIgnoreCase);
-    // ?local=1 muestra el login tradicional (oculto, solo para pruebas)
     var modoLocal = Request.QueryString["local"] == "1";
-    // Solo se redirige al SSO en GET; si el formulario tradicional regresó con error, se muestra el error
     var ssoAuto = ssoEnabled && !modoLocal && Request.HttpMethod == "GET";
-    // El formulario tradicional solo se ve sin SSO, con ?local=1 o al regresar de un POST con error
     var mostrarFormulario = !ssoEnabled || modoLocal || Request.HttpMethod == "POST";
 }
 
@@ -95,7 +92,6 @@
                     $('#sso-error').show();
                 }
 
-                // Regreso del SSO: el token viene en el hash (#id_token=...), nunca llega al servidor en la URL
                 var token = sso.handleRedirectCallback();
                 if (token) {
                     $.post('@Url.Action("LoginSso", "Account")', {
@@ -110,7 +106,6 @@
                     return;
                 }
 
-                // Sin token: ir al SSO. Si ya hay sesión de Microsoft, regresa de inmediato sin pedir nada
                 if (ssoAuto) {
                     sso.loginRedirect();
                 }

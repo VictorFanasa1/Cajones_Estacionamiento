@@ -20,7 +20,6 @@ namespace Estacionamiento
             GlobalFilters.Filters.Add(new AuditLogAttribute());
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            // Configurar SSO Fanasa (Microsoft Entra ID)
             FanasaSSOConfig.Initialize(new SsoOptions
             {
                 SsoUrl = ConfigurationManager.AppSettings["FanasaSSO:SsoUrl"],

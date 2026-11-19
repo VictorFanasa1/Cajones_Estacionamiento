@@ -1,11 +1,6 @@
-# Archivos locales de Visual Studio
 .vs/
 *.suo
 *.user
-
-# Salida de compilación
 [Bb]in/
 [Oo]bj/
-
-# Credenciales locales (appSettings file="Secrets.config")
 Estacionamiento/Secrets.config

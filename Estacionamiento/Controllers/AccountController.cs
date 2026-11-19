@@ -180,9 +180,6 @@ namespace Estacionamiento.Controllers
             }
         }
 
-        // Login con SSO Fanasa (Microsoft Entra ID). Convive con el login tradicional.
-        // El navegador obtiene el id_token en el popup del SSO y lo envía aquí;
-        // el servidor valida firma, emisor, audiencia y vigencia antes de confiar en él.
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -222,8 +219,6 @@ namespace Estacionamiento.Controllers
             }
         }
 
-        // Busca en AD al usuario autenticado por SSO usando su correo/UPN.
-        // Devuelve null si no hay exactamente una coincidencia.
         private MUsuarios BuscarUsuarioADPorCorreo(string correo)
         {
             var ldapPath = ConfigurationManager.AppSettings["LdapPath"];
@@ -445,8 +440,6 @@ namespace Estacionamiento.Controllers
             sessionCookie.Expires = DateTime.Now.AddYears(-1);
             Response.Cookies.Add(sessionCookie);
 
-            // Con SSO: regresar a la pantalla de login del portal SSO, que espera a que el usuario
-            // inicie sesión otra vez y luego regresa a Account/Login con el token.
             var sso = FanasaSSOConfig.Current;
             if (string.Equals(ConfigurationManager.AppSettings["FanasaSSO:Enabled"], "true", StringComparison.OrdinalIgnoreCase)
                 && sso != null && !string.IsNullOrWhiteSpace(sso.SsoUrl))
